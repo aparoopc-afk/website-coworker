@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>coworker1 — a thesis on AI-first organizations</title>
+  <meta name="description" content="AI-first organizations are 60% data, 30% orchestration, 10% models. Testing the thesis on options trading.">
+  <meta property="og:title" content="coworker1">
+  <meta property="og:description" content="60% data · 30% orchestration · 10% models. An AI architect's thesis, tested on trading.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-subtle: #131313;
+      --fg: #e8e8e8;
+      --fg-muted: #9a9a9a;
+      --fg-subtle: #5a5a5a;
+      --accent: #0072B2;
+      --accent-warm: #E69F00;
+      --accent-dim: #004d7a;
+      --border: #1c1c1c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Charter', 'Iowan Old Style', 'Georgia', 'Cambria', serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 64px 24px 48px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* ── Logomark (top-left, persistent) ── */
+    .mark {
+      font-family: 'SF Mono', 'JetBrains Mono', Menlo, Monaco, monospace;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 88px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+    .mark-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* ── Hero thesis ── */
+    .hero-tag {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Charter', 'Iowan Old Style', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(32px, 4.6vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+      color: var(--fg);
+    }
+    h1 em { font-style: italic; color: var(--fg); }
+
+    /* ── 60/30/10 visualization ── */
+    .thesis-viz {
+      margin: 48px 0 64px;
+      padding: 28px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .thesis-bars {
+      display: flex;
+      height: 48px;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(0, 114, 178, 0.08);
+    }
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+    .bar-data { background: var(--accent); flex: 6; }
+    .bar-orch { background: #005a8c; flex: 3; }
+    .bar-models { background: #003d60; flex: 1; }
+
+    .thesis-legend {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+    }
+    .legend-item {
+      padding-top: 10px;
+      border-top: 2px solid;
+    }
+    .legend-data { border-color: var(--accent); }
+    .legend-orch { border-color: #005a8c; }
+    .legend-models { border-color: #003d60; }
+    .legend-label {
+      color: var(--fg);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .legend-note {
+      color: var(--fg-muted);
+      font-family: 'Charter', Georgia, serif;
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    /* ── Prose sections ── */
+    section {
+      margin-bottom: 72px;
+    }
+    .section-label {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    h2 {
+      font-family: 'Charter', Georgia, serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--fg);
+      margin-bottom: 20px;
+      letter-spacing: -0.005em;
+    }
+    p {
+      font-size: 17px;
+      color: var(--fg);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    p.dim {
+      color: var(--fg-muted);
+    }
+    p strong {
+      color: var(--fg);
+      font-weight: 500;
+    }
+    p em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── Phases (builder log) ── */
+    .phases {
+      margin-top: 32px;
+    }
+    .phase {
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+      align-items: baseline;
+    }
+    .phase:last-child { border-bottom: 1px solid var(--border); }
+    .phase-when {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--fg-muted);
+      letter-spacing: 0.1em;
+    }
+    .phase-when strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+    .phase-body {
+      font-size: 15px;
+      color: var(--fg);
+      line-height: 1.6;
+    }
+    .phase-body em {
+      color: var(--fg-muted);
+      font-style: italic;
+      font-size: 13px;
+      display: block;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 560px) {
+      .phase { grid-template-columns: 1fr; gap: 6px; }
+    }
+
+    /* ── Pull quote ── */
+    blockquote {
+      border-left: 2px solid var(--accent-dim);
+      padding: 0 0 0 24px;
+      margin: 40px 0 48px;
+      font-size: 17px;
+      color: var(--fg-muted);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      margin-top: 80px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 13px;
+      color: var(--fg-subtle);
+      line-height: 1.8;
+    }
+    footer .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      letter-spacing: 0.04em;
+    }
+    footer a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      transition: all 0.2s ease;
+    }
+    footer a:hover {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+    .footer-note {
+      margin-top: 16px;
+      color: var(--fg-subtle);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+    .cursor {
+      color: var(--accent);
+      animation: blink 1.2s infinite step-end;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Better mobile */
+    @media (max-width: 480px) {
+      body { padding: 48px 20px 40px; }
+      .mark { margin-bottom: 64px; }
+      section { margin-bottom: 56px; }
+      .thesis-viz { padding: 20px; margin: 36px 0 48px; }
+      .thesis-legend { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="mark">
+      <span class="mark-dot"></span>
+      coworker1
+    </div>
+
+    <div class="hero-tag">A thesis, in stealth.</div>
+
+    <h1>
+      An AI-first organization is not <em>80% models</em>.<br>
+      It is mostly <em>data</em>, and mostly <em>orchestration</em>.
+    </h1>
+
+    <div class="thesis-viz">
+      <div class="thesis-bars">
+        <div class="bar bar-data">60% DATA</div>
+        <div class="bar bar-orch">30% ORCH.</div>
+        <div class="bar bar-models">10%</div>
+      </div>
+      <div class="thesis-legend">
+        <div class="legend-item legend-data">
+          <div class="legend-label">DATA</div>
+          <div class="legend-note">The compounding moat. Clean, proprietary, well-structured.</div>
+        </div>
+        <div class="legend-item legend-orch">
+          <div class="legend-label">ORCHESTRATION</div>
+          <div class="legend-note">The new craft. Agents, pipelines, feedback loops.</div>
+        </div>
+        <div class="legend-item legend-models">
+          <div class="legend-label">MODELS</div>
+          <div class="legend-note">Commoditizing. Swappable underneath everything.</div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-label">THE CRAFT</div>
+      <h2>I'm an AI architect testing my own thesis.</h2>
+      <p>
+        After years of building AI systems for enterprises, I wanted to prove
+        the 60/30/10 principle on a problem I know viscerally — not from a
+        conference slide, but from <strong>twenty years of personal
+        capital</strong> committed to it.
+      </p>
+      <p class="dim">
+        I've traded US and Indian markets since the early 2000s. Enough to
+        see every failure mode. Enough to know which tools lie, which data
+        feeds mislead, which calibration loops are missing. Enough to lose
+        money on trades I'd later recognize as obvious if I had the right
+        signals in the right order at the right time.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">THE TESTBED</div>
+      <h2>Options trading is the cleanest data domain.</h2>
+      <p>
+        Every trade has a ground truth. Win or loss. Measurable in dollars,
+        in time, in calibration error.
+      </p>
+      <p>
+        Every signal has an observable edge — or doesn't. The market pays
+        you for being right. Punishes you for being wrong. There's no hand-
+        waving, no vanity metric, no subjective review.
+      </p>
+      <p>
+        If the 60/30/10 thesis is correct, it should show up here first —
+        because trading is a domain where <em>the feedback loop closes
+        within days</em>, where data compounds faster than models improve,
+        where orchestration (getting the right signal to the right decision
+        at the right moment) is the whole game.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-label">THE BUILD</div>
+      <h2>Claude Opus 4.7 is the orchestration primitive.</h2>
+      <p>
+        The 1M-context window compresses what would have taken a team of
+        five developers twelve months into a few weeks of solo work.
+      </p>
+      <p>
+        I'm the architect, the ops engineer, the trader, the skeptic.
+        Claude is the pair programmer, the research assistant, the code
+        reviewer. We are coworkers — hence the name.
+      </p>
+      <p class="dim">
+        The platform integrates institutional flow data, catalyst news,
+        per-ticker Bayesian calibration, adaptive thresholds, and a
+        self-correcting feedback loop that compounds week over week.
+        <strong>Models change underneath. Data stays. Orchestration
+        improves.</strong>
+      </p>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-when"><strong>PHASE 1</strong>2026 — NOW</div>
+          <div class="phase-body">
+            Solo operator platform. Live signals, calibrated thresholds,
+            Bayesian per-ticker learning.
+            <em>Running against real personal capital.</em>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-when"><strong>PHASE 2</strong>Q3 2026</div>
+          <div class="phase-body">
+            Research publication. Anonymized calibration data and
+            architecture notes, for traders learning to operate
+            systematically.
+            <em>Credit to data partners included.</em>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-when"><strong>PHASE 3</strong>2027</div>
+          <div class="phase-body">
+            Multi-operator platform. Shared intelligence layer across
+            disciplined capital allocators.
+            <em>Data moat begins to compound across users.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <blockquote>
+      Models are becoming commoditized. Orchestration is the new craft.
+      Data — clean, proprietary, well-structured — is the only thing
+      that compounds over time.
+    </blockquote>
+
+    <footer>
+      <div class="row">
+        <div>Partnership inquiries &rarr; <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
+        <div>building<span class="cursor">▪</span></div>
+      </div>
+      <div class="footer-note">
+        © 2026 coworker1 · In stealth · No forms, no trackers, no noise.
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
