@@ -83,63 +83,60 @@
     }
     h1 em { font-style: italic; color: var(--fg); }
 
-    /* ── 60/30/10 visualization ── */
-    .thesis-viz {
-      margin: 48px 0 64px;
-      padding: 28px;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .thesis-bars {
-      display: flex;
-      height: 48px;
-      border-radius: 2px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 0 20px rgba(0, 114, 178, 0.08);
-    }
-    .bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ── Thesis split (inline, restrained) ── */
+    .thesis-split {
       font-family: 'SF Mono', Menlo, monospace;
-      font-size: 11px;
-      color: #fff;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 12px;
+      color: var(--fg-muted);
+      letter-spacing: 0.06em;
+      margin: 0 0 56px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
     }
-    .bar-data { background: var(--accent); flex: 6; }
-    .bar-orch { background: #005a8c; flex: 3; }
-    .bar-models { background: #003d60; flex: 1; }
+    .split-label {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 2px;
+    }
 
-    .thesis-legend {
+    /* ── Status block (real numbers, evidence over thesis) ── */
+    .status {
+      margin-bottom: 72px;
+    }
+    .status-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 24px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+    }
+    .status-cell {
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+    }
+    .status-num {
+      font-family: 'Charter', Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .status-label {
       font-family: 'SF Mono', Menlo, monospace;
       font-size: 11px;
-    }
-    .legend-item {
-      padding-top: 10px;
-      border-top: 2px solid;
-    }
-    .legend-data { border-color: var(--accent); }
-    .legend-orch { border-color: #005a8c; }
-    .legend-models { border-color: #003d60; }
-    .legend-label {
-      color: var(--fg);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-    .legend-note {
       color: var(--fg-muted);
-      font-family: 'Charter', Georgia, serif;
-      font-size: 13px;
-      line-height: 1.5;
-      font-weight: 400;
-      letter-spacing: 0;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+    .status-note {
+      font-size: 14px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    @media (max-width: 480px) {
+      .status-grid { grid-template-columns: 1fr; gap: 0; }
     }
 
     /* ── Prose sections ── */
@@ -304,36 +301,42 @@
       I'm testing it on my own capital.
     </h1>
 
-    <div class="thesis-viz">
-      <div class="thesis-bars">
-        <div class="bar bar-data">60% DATA</div>
-        <div class="bar bar-orch">30% ORCH.</div>
-        <div class="bar bar-models">10%</div>
-      </div>
-      <div class="thesis-legend">
-        <div class="legend-item legend-data">
-          <div class="legend-label">DATA</div>
-          <div class="legend-note">Where the edge actually lives, if you can keep it clean.</div>
-        </div>
-        <div class="legend-item legend-orch">
-          <div class="legend-label">ORCHESTRATION</div>
-          <div class="legend-note">Agents, pipelines, feedback loops. Unglamorous; mostly what I do all day.</div>
-        </div>
-        <div class="legend-item legend-models">
-          <div class="legend-label">MODELS</div>
-          <div class="legend-note">Swappable. I've rewritten against three so far.</div>
-        </div>
-      </div>
+    <div class="thesis-split">
+      <span class="split-label">DATA</span> 60% &middot;
+      <span class="split-label">ORCHESTRATION</span> 30% &middot;
+      <span class="split-label">MODELS</span> 10%
     </div>
 
+    <section class="status">
+      <div class="section-label">AS OF THIS WEEK</div>
+      <div class="status-grid">
+        <div class="status-cell">
+          <div class="status-num">20</div>
+          <div class="status-label">closed trades</div>
+        </div>
+        <div class="status-cell">
+          <div class="status-num">80%</div>
+          <div class="status-label">overall win rate</div>
+        </div>
+        <div class="status-cell">
+          <div class="status-num">16 days</div>
+          <div class="status-label">live</div>
+        </div>
+      </div>
+      <p class="status-note">
+        CALL side is calibrating well. PUT side is underperforming (43% win rate, n=7) &mdash; trimming exposure there until the pattern resolves. Numbers update weekly.
+      </p>
+    </section>
+
     <section>
-      <div class="section-label">THE CRAFT</div>
-      <h2>I'm an AI architect testing my own thesis.</h2>
+      <div class="section-label">BACKGROUND</div>
+      <h2>Why this problem, why now.</h2>
       <p>
-        After years of building AI systems for enterprises, I wanted to
-        pressure-test the 60/30/10 idea on a problem I know viscerally —
-        not from a conference slide, but from <strong>twenty years of
-        personal trading</strong> across US and Indian markets.
+        I build AI systems for a living. I've traded my own capital for
+        twenty years across US and Indian markets. coworker1 is the
+        workbench where those two practices meet — a problem I know
+        viscerally, being rebuilt with tools that only recently became
+        practical for one person to use end-to-end.
       </p>
       <p class="dim">
         Enough to recognize most of the failure modes when they show up
@@ -382,27 +385,18 @@
 
       <div class="phases">
         <div class="phase">
-          <div class="phase-when"><strong>PHASE 1</strong>2026 — NOW</div>
+          <div class="phase-when"><strong>NOW</strong>2026</div>
           <div class="phase-body">
-            Solo operator platform. Live signals, calibrated thresholds,
-            Bayesian per-ticker learning.
-            <em>Running against real personal capital.</em>
+            Solo operator. Live signals, calibrated thresholds, Bayesian
+            per-ticker learning, running against real capital.
           </div>
         </div>
         <div class="phase">
-          <div class="phase-when"><strong>PHASE 2</strong>Q3 2026</div>
+          <div class="phase-when"><strong>NEXT</strong>tentative</div>
           <div class="phase-body">
-            Research publication. Anonymized calibration data and
-            architecture notes, for traders learning to operate
-            systematically.
-            <em>Credit to data partners included.</em>
-          </div>
-        </div>
-        <div class="phase">
-          <div class="phase-when"><strong>PHASE 3</strong>2027 — maybe</div>
-          <div class="phase-body">
-            Multi-operator, if it earns the right to exist.
-            <em>Depends on whether Phase 1 earns the right to Phase 2.</em>
+            Anonymized calibration notes published to a subscriber
+            audience, if the current phase earns the right to exist.
+            <em>Everything past that depends on earning that right.</em>
           </div>
         </div>
       </div>
