@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team — coworker1</title>
+  <meta name="description" content="The operator behind coworker1.">
+  <meta property="og:title" content="coworker1 — Team">
+  <meta property="og:description" content="Founded by Aparoop Chaudhary. Twenty years of trading. Two decades building AI systems.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-subtle: #131313;
+      --fg: #e8e8e8;
+      --fg-muted: #9a9a9a;
+      --fg-subtle: #5a5a5a;
+      --accent: #0072B2;
+      --accent-dim: #004d7a;
+      --border: #1c1c1c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Charter', 'Iowan Old Style', 'Georgia', 'Cambria', serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 64px 24px 48px;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── Logomark ── */
+    .mark {
+      font-family: 'SF Mono', 'JetBrains Mono', Menlo, Monaco, monospace;
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 96px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+    .mark a { color: inherit; text-decoration: none; }
+    .mark-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+    }
+    .mark-nav {
+      margin-left: 20px;
+      display: flex;
+      gap: 16px;
+    }
+    .mark-nav a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .mark-nav a.active { color: var(--accent); }
+    .mark-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent-dim);
+    }
+    .mark-updated {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    /* ── Team page hero ── */
+    h1 {
+      font-family: 'Charter', 'Iowan Old Style', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 56px;
+      color: var(--fg);
+    }
+
+    /* ── Founder card ── */
+    .founder {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      align-items: start;
+    }
+    .founder-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 4px;
+      object-fit: cover;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: block;
+    }
+    .founder-photo-placeholder {
+      width: 180px;
+      height: 180px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Charter', Georgia, serif;
+      font-size: 48px;
+      color: var(--accent);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .founder-name {
+      font-family: 'Charter', Georgia, serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .founder-role {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .founder-bio p {
+      font-size: 16px;
+      color: var(--fg);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .founder-bio p.dim {
+      color: var(--fg-muted);
+    }
+    .founder-links {
+      margin-top: 20px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+    .founder-links a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      margin-right: 16px;
+      transition: all 0.2s ease;
+    }
+    .founder-links a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── AI coworker block (playful) ── */
+    .coworker-note {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      margin-bottom: 64px;
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+    }
+    .coworker-note strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 13px;
+      color: var(--fg-subtle);
+      line-height: 1.8;
+    }
+    footer .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      letter-spacing: 0.04em;
+    }
+    footer a {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      transition: all 0.2s ease;
+    }
+    footer a:hover {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+    .footer-note {
+      margin-top: 16px;
+      color: var(--fg-subtle);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+    .cursor {
+      color: var(--accent);
+      animation: blink 1.2s infinite step-end;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .founder { grid-template-columns: 1fr; gap: 24px; }
+      .founder-photo, .founder-photo-placeholder { width: 140px; height: 140px; }
+      .founder-photo-placeholder { font-size: 38px; }
+    }
+    @media (max-width: 480px) {
+      body { padding: 48px 20px 40px; }
+      .mark { margin-bottom: 64px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="mark">
+      <span class="mark-dot"></span>
+      <a href="/">coworker1</a>
+      <nav class="mark-nav">
+        <a href="/team.html" class="active">Team</a>
+      </nav>
+      <span class="mark-updated">Last updated 2026-04-19</span>
+    </div>
+
+    <h1>The operator behind coworker1.</h1>
+
+    <div class="founder">
+      <img class="founder-photo" src="aparoop.jpg" alt="Aparoop Chaudhary"
+           onerror="this.outerHTML='&lt;div class=&quot;founder-photo-placeholder&quot;&gt;AC&lt;/div&gt;'">
+      <div>
+        <div class="founder-name">Aparoop Chaudhary</div>
+        <div class="founder-role">Founder</div>
+        <div class="founder-bio">
+          <p>
+            Twenty years of trading US and Indian equities &mdash; across
+            cycles, asset classes, and personal drawdowns deep enough to
+            remember exactly what bad tooling costs.
+          </p>
+          <p>
+            Two decades of building AI systems for enterprises, starting
+            when the job title was still &ldquo;data scientist with
+            opinions.&rdquo; coworker1 is where those two practices meet:
+            the trading infrastructure I wished I&rsquo;d had for the last
+            twenty years, rebuilt with tools that only recently became
+            practical for one person to use end-to-end.
+          </p>
+          <p class="dim">
+            Markets don&rsquo;t care about team sizes. But the craft has
+            shifted &mdash; models like Claude Opus 4.7, with 1M-token
+            context, turn what used to be a team effort into a one-person
+            workbench. I design the system; Claude reviews it, refactors
+            it, catches what I miss. We call that arrangement coworkers.
+          </p>
+          <p class="dim">
+            Based in Pacific Time. Still trading. Still building.
+          </p>
+        </div>
+        <div class="founder-links">
+          <a href="https://www.linkedin.com/in/aparoop" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="coworker-note">
+      <strong>On coworkers &mdash;</strong> the name is not metaphorical.
+      Every piece of production code at coworker1 is written with Claude
+      as pair programmer, research assistant, and code reviewer. Credit
+      where earned.
+    </div>
+
+    <footer>
+      <div class="row">
+        <div>Partnership inquiries &rarr; <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
+        <div><a href="/">&larr; Home</a> &middot; building<span class="cursor">▪</span></div>
+      </div>
+      <div class="footer-note">
+        &copy; 2026 coworker1 &middot; In stealth &middot; No forms, no trackers, no noise.
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

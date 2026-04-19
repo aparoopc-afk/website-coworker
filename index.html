@@ -55,6 +55,23 @@
       border-radius: 50%;
       box-shadow: 0 0 10px var(--accent);
     }
+    .mark-nav {
+      margin-left: 20px;
+      display: flex;
+      gap: 16px;
+    }
+    .mark-nav a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .mark-nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent-dim);
+    }
     .mark-updated {
       margin-left: auto;
       font-size: 11px;
@@ -188,7 +205,10 @@
 
     <div class="mark">
       <span class="mark-dot"></span>
-      coworker1
+      <span class="mark-name">coworker1</span>
+      <nav class="mark-nav">
+        <a href="/team.html">Team</a>
+      </nav>
       <span class="mark-updated">Last updated 2026-04-19</span>
     </div>
 
@@ -250,9 +270,8 @@
     </div>
 
     <p class="closing">
-      Built by a human, with AI coworkers. Claude Opus 4.7 (1M context)
-      compresses what would have taken a team of five into weeks of solo
-      development.
+      Built by a human, with AI coworkers built on Opus 4.7 &mdash; turned
+      what would have been a team effort into a one-person workbench.
     </p>
 
     <footer>
