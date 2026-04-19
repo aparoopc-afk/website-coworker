@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview B — Premium Editorial · coworker1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F2EC;
+      --paper-alt: #EFEAE0;
+      --ink: #1A1A1A;
+      --ink-soft: #4A4A48;
+      --ink-mute: #7A7870;
+      --rule: #D6CFBF;
+      --accent: #2F4A6B;
+      --accent-soft: #6B8AB0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Fraunces', 'Charter', 'Iowan Old Style', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 56px 32px 64px;
+      font-feature-settings: "ss01", "ss02";
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+
+    /* ── Masthead ── */
+    .masthead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 96px;
+    }
+    .masthead-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .masthead-nav {
+      display: flex;
+      gap: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .masthead-nav a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .masthead-nav a:hover { border-bottom-color: var(--ink); }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+    .eyebrow .sep { color: var(--ink-mute); margin: 0 8px; }
+
+    /* ── Hero ── */
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(56px, 7vw, 88px);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 48px;
+      font-variation-settings: "opsz" 144;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .subhead {
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 96px;
+      letter-spacing: -0.005em;
+    }
+
+    /* ── Section numbering ── */
+    section { margin-bottom: 96px; }
+    .section-num {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 32px;
+    }
+    .section-num .num {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .section-num .title {
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+
+    /* ── Lede with drop cap ── */
+    .lede {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 24px;
+    }
+    .lede::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 68px;
+      float: left;
+      line-height: 0.9;
+      padding: 8px 10px 0 0;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* ── Phases (editorial log) ── */
+    .log-entry {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .log-entry:last-child { border-bottom: 1px solid var(--rule); }
+    .log-when {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-top: 4px;
+    }
+    .log-when strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .log-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .log-body {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 520px;
+    }
+
+    /* ── Attribution ── */
+    .attribution {
+      padding: 40px 0 0;
+      border-top: 1px solid var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 64px;
+      font-style: italic;
+    }
+    .attribution strong {
+      color: var(--ink);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* ── Colophon footer ── */
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+    footer a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-soft);
+      transition: border-color 0.2s;
+    }
+    footer a:hover { border-bottom-color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .log-entry { grid-template-columns: 1fr; gap: 8px; }
+      .lede::first-letter { font-size: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="masthead">
+      <div class="masthead-brand">coworker1</div>
+      <nav class="masthead-nav">
+        <a href="/">Home</a>
+        <a href="/team.html">Team</a>
+        <a href="mailto:aparoop@coworker1.com">Partner</a>
+      </nav>
+    </div>
+
+    <div class="eyebrow">
+      Stealth <span class="sep">·</span> 2026 <span class="sep">·</span> In build
+    </div>
+
+    <h1>The AI teammate every solo operator has been <em>missing</em>.</h1>
+
+    <p class="subhead">
+      Algorithmic trading and research infrastructure for the next generation of systematic operators — institutional flow, catalyst-speed news, per-ticker Bayesian calibration, all in one self-correcting system.
+    </p>
+
+    <section>
+      <div class="section-num">
+        <span class="num">01</span>
+        <span class="title">The thesis</span>
+      </div>
+      <p class="lede">
+        Most people who build trading systems haven't traded. Most people who trade haven't built systems at scale. coworker1 is the first platform being built end-to-end by one operator who has done both — pointed at a problem the builder knows viscerally.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">02</span>
+        <span class="title">The roadmap</span>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase I</strong>2026 · Now</div>
+        <div>
+          <div class="log-title">Solo Operator</div>
+          <div class="log-body">Live signals, adaptive thresholds, per-ticker Bayesian learning. Single founder, in stealth.</div>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase II</strong>Q3 2026</div>
+        <div>
+          <div class="log-title">Research Publication</div>
+          <div class="log-body">Anonymized calibration data for a subscriber audience. Educating the next generation of disciplined traders.</div>
+        </div>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase III</strong>2027</div>
+        <div>
+          <div class="log-title">Multi-seat Platform</div>
+          <div class="log-body">Shared intelligence layer. Collaborative signal generation across a community of operators.</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="attribution">
+      <strong>Built by a human, with AI coworkers built on Opus 4.7</strong> — turned what would have been a team effort into a one-person workbench.
+    </p>
+
+    <footer>
+      <div>© 2026 coworker1</div>
+      <div><a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
+      <div><a href="https://www.linkedin.com/in/aparoop">LinkedIn</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>

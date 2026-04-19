@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview C — Extreme Minimal · coworker1</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --fg: #e0e0e0;
+      --fg-mute: #888;
+      --accent: #ff9f43;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Charter', 'Iowan Old Style', Georgia, Cambria, serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 60px 24px 60px;
+      min-height: 100vh;
+    }
+    .container { max-width: 560px; margin: 0 auto; }
+
+    header {
+      margin-bottom: 72px;
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+      font-size: 13px;
+      color: var(--fg-mute);
+    }
+    header a {
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    h1 {
+      font-family: inherit;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.4;
+      margin-bottom: 40px;
+      color: var(--fg);
+    }
+
+    p {
+      margin-bottom: 24px;
+      font-size: 17px;
+      color: var(--fg);
+    }
+    p.dim { color: var(--fg-mute); }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a:hover { opacity: 0.8; }
+
+    .roadmap {
+      margin: 40px 0;
+      padding: 0;
+    }
+    .roadmap-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 20px;
+      padding: 16px 0;
+      font-size: 16px;
+    }
+    .roadmap-when {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 13px;
+      color: var(--fg-mute);
+    }
+    .roadmap-body { color: var(--fg); }
+    .roadmap-body strong { font-weight: 400; color: var(--accent); }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #2a2a2a;
+      margin: 40px 0;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 13px;
+      color: var(--fg-mute);
+      line-height: 2;
+    }
+
+    @media (max-width: 480px) {
+      .roadmap-row { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a href="/">coworker1</a> — <a href="/team.html">team</a> — stealth, 2026
+    </header>
+
+    <h1>coworker1: a trading and research platform for one operator, built with AI coworkers.</h1>
+
+    <p>
+      Most people who build trading systems haven't traded. Most people who trade haven't built systems at scale. I've been doing both for twenty years. This is the first time I'm pointing the whole stack at one problem.
+    </p>
+
+    <p class="dim">
+      Institutional flow, catalyst-speed news, per-ticker Bayesian calibration, adaptive thresholds. Integrated, self-correcting, personal. Written with Claude Opus 4.7 as pair programmer — hence the name.
+    </p>
+
+    <div class="roadmap">
+      <div class="roadmap-row">
+        <div class="roadmap-when">2026</div>
+        <div class="roadmap-body"><strong>now.</strong> Solo operator. Live signals, Bayesian per-ticker learning, running against real capital.</div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-when">Q3 2026</div>
+        <div class="roadmap-body"><strong>next.</strong> Anonymized research and calibration data, published to a subscriber audience.</div>
+      </div>
+      <div class="roadmap-row">
+        <div class="roadmap-when">2027</div>
+        <div class="roadmap-body"><strong>later.</strong> Multi-seat platform, if the earlier phases earn it.</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="dim">
+      Built by a human with AI coworkers built on Opus 4.7 — what would have been a team effort, running as a one-person workbench.
+    </p>
+
+    <footer>
+      aparoop chakraborty · <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a><br>
+      <a href="https://www.linkedin.com/in/aparoop">linkedin</a> · iit · google · isb<br>
+      © 2026
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview A — Modern SaaS · coworker1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-grad-top: #0a0a0a;
+      --bg-grad-mid: #050510;
+      --fg: #f5f5f7;
+      --fg-muted: #a0a0a8;
+      --fg-subtle: #606068;
+      --accent: #5b9cff;
+      --accent-glow: rgba(91, 156, 255, 0.15);
+      --border: rgba(255, 255, 255, 0.06);
+      --border-strong: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.55;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 800px;
+      background: radial-gradient(ellipse at top, var(--accent-glow) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 32px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 14px;
+      background: rgba(20, 20, 26, 0.5);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      margin-bottom: 120px;
+      font-size: 13px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--fg); }
+    .brand-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--fg); }
+    .nav-cta {
+      padding: 7px 14px;
+      background: var(--fg);
+      color: var(--bg);
+      border-radius: 999px;
+      font-weight: 500;
+    }
+    .nav-cta:hover { color: var(--bg); opacity: 0.9; }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px;
+      background: rgba(91, 156, 255, 0.08);
+      border: 1px solid rgba(91, 156, 255, 0.2);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% {opacity:1;} 50% {opacity:0.4;} }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #a0a0a8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .subhead {
+      font-size: 19px;
+      color: var(--fg-muted);
+      max-width: 640px;
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    .cta-row { display: flex; gap: 12px; margin-bottom: 140px; }
+    .btn {
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-ghost { background: transparent; color: var(--fg); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      max-width: 640px;
+    }
+
+    .phases-grid { display: grid; gap: 16px; margin-bottom: 120px; }
+    .phase-card {
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      transition: all 0.3s;
+    }
+    .phase-card:hover {
+      border-color: rgba(91, 156, 255, 0.3);
+      background: linear-gradient(180deg, rgba(91,156,255,0.04), rgba(91,156,255,0));
+    }
+    .phase-meta {
+      display: flex; gap: 10px; align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .phase-label {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .phase-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .phase-body {
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.6;
+    }
+
+    .closing {
+      padding: 32px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-strong);
+      border-radius: 14px;
+      font-size: 15px;
+      color: var(--fg-muted);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .closing strong { color: var(--fg); font-weight: 600; }
+
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--fg-subtle);
+    }
+    footer a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border-strong); }
+    footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .cta-row { flex-direction: column; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <nav>
+      <div class="brand"><span class="brand-dot"></span>coworker1</div>
+      <ul>
+        <li><a href="#">Platform</a></li>
+        <li><a href="#">Team</a></li>
+        <li><a href="#">Research</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:aparoop@coworker1.com">Partner →</a>
+    </nav>
+
+    <div class="pill"><span class="pill-dot"></span>In stealth · 2026</div>
+
+    <h1>The AI teammate<br>every solo operator<br>has been missing.</h1>
+
+    <p class="subhead">
+      Algorithmic trading and research infrastructure for the next generation of systematic operators. Institutional flow, catalyst-speed news, per-ticker Bayesian calibration — integrated, self-correcting, personal.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:aparoop@coworker1.com">Partnership inquiries →</a>
+      <a class="btn btn-ghost" href="#team">Meet the founder</a>
+    </div>
+
+    <div class="section-eyebrow">Roadmap</div>
+    <h2>Three phases, earned one at a time.</h2>
+
+    <div class="phases-grid">
+      <div class="phase-card">
+        <div class="phase-meta"><span class="phase-label">PHASE 01</span>· 2026 · NOW</div>
+        <div class="phase-title">Solo Operator</div>
+        <div class="phase-body">Live signals, adaptive thresholds, per-ticker Bayesian learning. Single founder, in stealth.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-meta"><span class="phase-label">PHASE 02</span>· Q3 2026</div>
+        <div class="phase-title">Research Publication</div>
+        <div class="phase-body">Anonymized calibration data for a subscriber audience. Educating the next generation of disciplined traders.</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-meta"><span class="phase-label">PHASE 03</span>· 2027</div>
+        <div class="phase-title">Multi-seat Platform</div>
+        <div class="phase-body">Shared intelligence layer. Collaborative signal generation across a community of operators.</div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <strong>Built by a human, with AI coworkers built on Opus 4.7</strong> — turned what would have been a team effort into a one-person workbench.
+    </div>
+
+    <footer>
+      <div>© 2026 coworker1 · In stealth</div>
+      <div><a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a> · <a href="https://www.linkedin.com/in/aparoop">LinkedIn</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>
