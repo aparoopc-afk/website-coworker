@@ -329,47 +329,16 @@
         <span class="title">The architecture</span>
       </div>
       <p class="prose">
-        Seven data layers, one orchestrated decision engine. Every layer has
-        graceful degradation, full provenance tracking, and a measured
-        confidence weight that flows through to the final signal.
+        Flip Picker is a layered decision system. Multiple data streams
+        enter with their own confidence weights; an orchestrator weighs,
+        resolves conflicts, issues a signal. Calibration runs weekly,
+        grades itself against realized outcomes, and quietly adjusts the
+        weights it was wrong about.
       </p>
-
-      <div class="arch-list">
-        <div class="arch-row">
-          <div class="arch-label">L1 · Price</div>
-          <div class="arch-body">Live quotes with multi-source fallback. Pre/post-market aware.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L2 · Flow</div>
-          <div class="arch-body">Institutional options flow, dark pool, sweeps. No silent fallback &mdash; flow gaps are flagged loudly.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L3 · Greeks</div>
-          <div class="arch-body">Real-time first-order Greeks via v3 endpoints, Black-Scholes fallback from live IV.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L4 · Squeeze</div>
-          <div class="arch-body">Short interest, cost-to-borrow, days-to-cover, locate availability.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L5 · GEX</div>
-          <div class="arch-body">Locally computed gamma exposure. Positive = suppression; negative = expansion.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L6 · Regime</div>
-          <div class="arch-body">VIX term structure, market breadth, macro factors &mdash; composite regime classifier that adjusts every layer&rsquo;s weight.</div>
-        </div>
-        <div class="arch-row">
-          <div class="arch-label">L7 · Memory</div>
-          <div class="arch-body">Per-ticker Bayesian posterior. Cold-start priors give way to data-driven estimates at n=20+ samples.</div>
-        </div>
-      </div>
-
-      <p class="prose dim" style="margin-top:24px">
-        Layered on top: a calibration loop that runs weekly, a risk enforcer
-        that flags hard stops / trim locks / theta cliffs in real time, and
-        an output evaluator that grades every recommendation before it
-        surfaces.
+      <p class="prose dim">
+        The rules are simple. The edge lives in the seams between layers
+        &mdash; which ones, in what order, at what weight, under which
+        regime. That&rsquo;s the work, and that&rsquo;s the part we keep.
       </p>
     </section>
 
