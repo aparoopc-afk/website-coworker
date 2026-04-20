@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>coworker1 — the AI teammate for systematic operators</title>
-  <meta name="description" content="Algorithmic trading and research infrastructure for systematic operators. Institutional flow, catalyst-speed news, per-ticker Bayesian calibration. A Coworker Labs project, in stealth.">
-  <meta property="og:title" content="coworker1">
-  <meta property="og:description" content="The AI teammate every solo operator has been missing. A Coworker Labs project, in stealth.">
+  <title>Coworker Labs — AI transformation and operational loops for mid-market</title>
+  <meta name="description" content="Coworker Labs architects AI orchestration and operational loops for mid-market organizations. Fractional CAIO, orchestration architecture, feedback-loop design. Stealth, 2026.">
+  <meta property="og:title" content="Coworker Labs">
+  <meta property="og:description" content="AI transformation and operational loops for mid-market. Fractional, proven, in stealth.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +51,7 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--ink);
+      text-decoration: none;
     }
     .masthead-nav {
       display: flex;
@@ -84,12 +85,12 @@
     /* ── Hero ── */
     h1 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(56px, 7vw, 88px);
+      font-size: clamp(48px, 6.2vw, 76px);
       font-weight: 400;
-      line-height: 1.02;
+      line-height: 1.05;
       letter-spacing: -0.025em;
       color: var(--ink);
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       font-variation-settings: "opsz" 144;
     }
     h1 em {
@@ -106,7 +107,7 @@
     }
 
     /* ── Section numbering ── */
-    section { margin-bottom: 96px; }
+    section { margin-bottom: 88px; }
     .section-num {
       display: flex;
       align-items: baseline;
@@ -135,58 +136,159 @@
 
     /* ── Lede with drop cap ── */
     .lede {
-      font-size: 20px;
-      line-height: 1.6;
+      font-size: 19px;
+      line-height: 1.65;
       color: var(--ink);
       max-width: 620px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .lede::first-letter {
       font-family: 'Fraunces', serif;
-      font-size: 68px;
+      font-size: 62px;
       float: left;
       line-height: 0.9;
       padding: 8px 10px 0 0;
       font-weight: 500;
       color: var(--accent);
     }
+    .prose {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+    .prose.dim { color: var(--ink-soft); }
+    .prose strong { font-weight: 500; color: var(--ink); }
 
-    /* ── Phases (editorial log) ── */
-    .log-entry {
+    /* ── Service entries ── */
+    .service {
       display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 32px;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
       padding: 28px 0;
       border-top: 1px solid var(--rule);
+      align-items: start;
     }
-    .log-entry:last-child { border-bottom: 1px solid var(--rule); }
-    .log-when {
+    .service:last-child { border-bottom: 1px solid var(--rule); }
+    .service-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--ink-mute);
+      color: var(--accent);
+      font-weight: 600;
       padding-top: 4px;
     }
-    .log-when strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-    .log-title {
+    .service-title {
       font-family: 'Fraunces', serif;
       font-size: 22px;
       font-weight: 500;
       letter-spacing: -0.015em;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
       color: var(--ink);
     }
-    .log-body {
+    .service-body {
       font-size: 16px;
       line-height: 1.6;
       color: var(--ink-soft);
       max-width: 520px;
+    }
+    .service-meta {
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+
+    /* ── Demo callout (Ticker Picker block) ── */
+    .demo {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 36px 36px 32px;
+      margin-top: 16px;
+    }
+    .demo-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .demo-title {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .demo-body {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+    .demo-body strong { color: var(--ink); font-weight: 500; }
+    .demo-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 20px 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 16px;
+    }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 6px;
+    }
+    .demo-footnote {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--ink-mute);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── ICP list ── */
+    .icp {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 40px;
+      margin-top: 8px;
+    }
+    .icp-item {
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+    }
+    .icp-role {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .icp-detail {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.55;
     }
 
     /* ── Attribution ── */
@@ -230,8 +332,11 @@
 
     @media (max-width: 640px) {
       .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
-      .log-entry { grid-template-columns: 1fr; gap: 8px; }
-      .lede::first-letter { font-size: 56px; }
+      .service { grid-template-columns: 1fr; gap: 10px; }
+      .lede::first-letter { font-size: 52px; }
+      .demo { padding: 28px 24px 24px; }
+      .demo-stats { grid-template-columns: 1fr; gap: 16px; }
+      .icp { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -239,73 +344,134 @@
   <div class="container">
 
     <div class="masthead">
-      <div class="masthead-brand">Coworker Labs</div>
+      <a href="/" class="masthead-brand">Coworker Labs</a>
       <nav class="masthead-nav">
-        <a href="/">coworker1</a>
+        <a href="#work">Work</a>
         <a href="/team.html">Team</a>
         <a href="mailto:aparoop@coworker1.com">Partner</a>
       </nav>
     </div>
 
     <div class="eyebrow">
-      The first product <span class="sep">·</span> Stealth <span class="sep">·</span> 2026
+      AI Transformation <span class="sep">·</span> Operational Loops <span class="sep">·</span> Fractional, 2026
     </div>
 
-    <h1>The AI teammate every solo operator has been <em>missing</em>.</h1>
+    <h1>Most AI pilots don&rsquo;t make it to production. The problem isn&rsquo;t the model &mdash; it&rsquo;s the <em>loop</em>.</h1>
 
     <p class="subhead">
-      Algorithmic trading and research infrastructure for the next generation of systematic operators — institutional flow, catalyst-speed news, per-ticker Bayesian calibration, all in one self-correcting system.
+      Coworker Labs architects operational loops and AI orchestration for mid-market organizations &mdash; the companies who need AI to ship, not pitch. Fractional engagements. Working systems. Accountable to outcomes.
     </p>
 
-    <section>
+    <section id="thesis">
       <div class="section-num">
         <span class="num">01</span>
         <span class="title">The thesis</span>
       </div>
       <p class="lede">
-        Most people who build trading systems haven't traded. Most people who trade haven't built systems at scale. coworker1 is the first platform being built end-to-end by one operator who has done both — pointed at a problem the builder knows viscerally.
+        Most AI transformation work stalls because the architecture stops at the model. The engineering that separates a demo from a production system is the operational loop: how data flows in, how output is evaluated, how the system corrects itself, and how the humans running it stay in control.
+      </p>
+      <p class="prose dim">
+        Coworker Labs is built around that gap. We design the orchestration layer &mdash; agents, pipelines, calibration, guardrails, and the feedback loops that keep AI systems honest after deployment. Not slides. Running systems.
       </p>
     </section>
 
-    <section>
+    <section id="work">
       <div class="section-num">
         <span class="num">02</span>
-        <span class="title">The roadmap</span>
+        <span class="title">What we do</span>
       </div>
 
-      <div class="log-entry">
-        <div class="log-when"><strong>Phase I</strong>2026 · Now</div>
+      <div class="service">
+        <div class="service-label">Fractional<br>CAIO</div>
         <div>
-          <div class="log-title">Solo Operator</div>
-          <div class="log-body">Live signals, adaptive thresholds, per-ticker Bayesian learning. Single founder, in stealth.</div>
+          <div class="service-title">Chief AI Officer, part-time</div>
+          <div class="service-body">
+            Strategic AI leadership for mid-market companies that can&rsquo;t justify a full-time CAIO hire. Board-ready reports, vendor selection, roadmap design, risk framing, hire-or-build calls.
+          </div>
+          <div class="service-meta">10&ndash;20 hrs/week · 3&ndash;6 month minimum</div>
         </div>
       </div>
 
-      <div class="log-entry">
-        <div class="log-when"><strong>Phase II</strong>Q3 2026</div>
+      <div class="service">
+        <div class="service-label">Orchestration<br>Architecture</div>
         <div>
-          <div class="log-title">Research Publication</div>
-          <div class="log-body">Anonymized calibration data for a subscriber audience. Educating the next generation of disciplined traders.</div>
+          <div class="service-title">End-to-end AI system design</div>
+          <div class="service-body">
+            Agents, pipelines, evaluation loops, cross-functional data flow, guardrails. Delivered as working reference architecture integrated with your stack &mdash; not a PowerPoint.
+          </div>
+          <div class="service-meta">Fixed-scope engagements · 6&ndash;12 weeks</div>
         </div>
       </div>
 
-      <div class="log-entry">
-        <div class="log-when"><strong>Phase III</strong>2027</div>
+      <div class="service">
+        <div class="service-label">Operational<br>Loop Design</div>
         <div>
-          <div class="log-title">Multi-seat Platform</div>
-          <div class="log-body">Shared intelligence layer. Collaborative signal generation across a community of operators.</div>
+          <div class="service-title">Feedback loops for deployed AI</div>
+          <div class="service-body">
+            For teams with models in production but no calibration layer. We diagnose what&rsquo;s missing &mdash; evaluation, drift detection, self-correction, human-in-loop gates &mdash; and implement the missing layers.
+          </div>
+          <div class="service-meta">Diagnostic + implementation · 4&ndash;8 weeks</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="section-num">
+        <span class="num">03</span>
+        <span class="title">The live demo</span>
+      </div>
+
+      <div class="demo">
+        <div class="demo-label">coworker1 · running since Q1 2026</div>
+        <div class="demo-title">Ticker Picker &mdash; every architectural pattern we sell, pressure-tested against real capital.</div>
+        <div class="demo-body">
+          coworker1 is our internal proof point: a live algorithmic trading and research platform where every concept we design for clients &mdash; multi-agent orchestration, per-entity Bayesian calibration, self-correcting evaluation loops, cross-functional data flow &mdash; runs against <strong>real capital, in real time</strong>.
+        </div>
+        <p class="prose dim" style="margin-bottom:0">
+          If we can&rsquo;t make the architecture work on our own money, we won&rsquo;t sell it to yours. Architecture walk-through and reference implementation available under NDA.
+        </p>
+        <div class="demo-footnote">
+          Performance data, system diagrams, and code review sessions available to qualified partners after a short scoping call.
+        </div>
+      </div>
+    </section>
+
+    <section id="icp">
+      <div class="section-num">
+        <span class="num">04</span>
+        <span class="title">Who we partner with</span>
+      </div>
+      <p class="prose dim" style="margin-bottom:28px">
+        Mid-market organizations ($100M&ndash;$1B revenue), typically engaged by:
+      </p>
+      <div class="icp">
+        <div class="icp-item">
+          <div class="icp-role">CEOs &amp; COOs</div>
+          <div class="icp-detail">Who need AI to deliver operating leverage, not just press releases.</div>
+        </div>
+        <div class="icp-item">
+          <div class="icp-role">Newly-appointed CAIOs / CDOs</div>
+          <div class="icp-detail">Who inherit a pilot-heavy portfolio and need to move to production.</div>
+        </div>
+        <div class="icp-item">
+          <div class="icp-role">PE operating partners</div>
+          <div class="icp-detail">Pressure-testing portfolio companies&rsquo; AI roadmaps and value-creation plans.</div>
+        </div>
+        <div class="icp-item">
+          <div class="icp-role">Engineering leaders</div>
+          <div class="icp-detail">Whose teams have models in production but lack the orchestration to iterate on them safely.</div>
         </div>
       </div>
     </section>
 
     <p class="attribution">
-      <strong>Built by a human, with AI coworkers built on Opus 4.7</strong> — turned what would have been a team effort into a one-person workbench.
+      <strong>Built by a human, with AI coworkers built on Claude Opus 4.7</strong> &mdash; turned what would have been a team effort into a one-person workbench. Orchestrating humans and AI in the same workflow is the discipline. It&rsquo;s also what we bring to clients.
     </p>
 
     <footer>
       <div>© 2026 Coworker Labs</div>
-      <div>coworker1 <span style="color:var(--ink-mute)">&middot; first product, in stealth</span></div>
-      <div><a href="mailto:aparoop@coworker1.com">Partner</a></div>
+      <div>Fractional engagements &middot; <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
+      <div><a href="/team.html">Team</a></div>
     </footer>
 
   </div>
