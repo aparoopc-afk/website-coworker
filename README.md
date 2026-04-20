@@ -1,6 +1,10 @@
 # coworker1.com
 
-Stealth landing page for coworker1 — algorithmic trading + research platform.
+Landing page for **Coworker Labs** — AI transformation and operational-loop architecture practice for mid-market organizations.
+
+Features **Flip Picker** as the firm's live demo (in-house algorithmic trading platform used to pressure-test orchestration patterns before selling them to clients).
+
+Primary domain: `coworker1.com` (legacy name, retained).
 
 ## Architecture
 
