@@ -3,285 +3,309 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>coworker1 — the AI teammate for solo operators</title>
-  <meta name="description" content="Algorithmic trading and research infrastructure for the next generation of systematic operators. Institutional flow, catalyst-speed news, per-ticker Bayesian calibration.">
+  <title>coworker1 — the AI teammate for systematic operators</title>
+  <meta name="description" content="Algorithmic trading and research infrastructure for systematic operators. Institutional flow, catalyst-speed news, per-ticker Bayesian calibration. A Coworker Labs project, in stealth.">
   <meta property="og:title" content="coworker1">
-  <meta property="og:description" content="The AI teammate every solo operator has been missing.">
+  <meta property="og:description" content="The AI teammate every solo operator has been missing. A Coworker Labs project, in stealth.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --bg-subtle: #131313;
-      --fg: #e8e8e8;
-      --fg-muted: #9a9a9a;
-      --fg-subtle: #5a5a5a;
-      --accent: #0072B2;
-      --accent-warm: #E69F00;
-      --accent-dim: #004d7a;
-      --border: #1c1c1c;
+      --paper: #F6F2EC;
+      --paper-alt: #EFEAE0;
+      --ink: #1A1A1A;
+      --ink-soft: #4A4A48;
+      --ink-mute: #7A7870;
+      --rule: #D6CFBF;
+      --accent: #2F4A6B;
+      --accent-soft: #6B8AB0;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     body {
-      font-family: 'Charter', 'Iowan Old Style', 'Georgia', 'Cambria', serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.7;
+      font-family: 'Fraunces', 'Charter', 'Iowan Old Style', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
       min-height: 100vh;
-      padding: 64px 24px 48px;
+      padding: 56px 32px 64px;
+      font-feature-settings: "ss01", "ss02";
     }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
+    .container { max-width: 760px; margin: 0 auto; }
 
-    /* ── Logomark ── */
-    .mark {
-      font-family: 'SF Mono', 'JetBrains Mono', Menlo, Monaco, monospace;
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
+    /* ── Masthead ── */
+    .masthead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
       margin-bottom: 96px;
+    }
+    .masthead-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .masthead-nav {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 500;
-    }
-    .mark-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
-    }
-    .mark-nav {
-      margin-left: 20px;
-      display: flex;
-      gap: 16px;
-    }
-    .mark-nav a {
-      color: var(--fg-muted);
-      text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      border-bottom: 1px solid transparent;
-      transition: all 0.2s ease;
-    }
-    .mark-nav a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent-dim);
-    }
-    .mark-updated {
-      margin-left: auto;
+      gap: 28px;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: var(--fg-subtle);
-      letter-spacing: 0.08em;
-      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
     }
+    .masthead-nav a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .masthead-nav a:hover { border-bottom-color: var(--ink); }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+    .eyebrow .sep { color: var(--ink-mute); margin: 0 8px; }
 
     /* ── Hero ── */
     h1 {
-      font-family: 'Charter', 'Iowan Old Style', Georgia, serif;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(56px, 7vw, 88px);
       font-weight: 400;
-      font-size: clamp(40px, 6.2vw, 64px);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
-      color: var(--fg);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 48px;
+      font-variation-settings: "opsz" 144;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
     }
     .subhead {
-      font-size: 19px;
-      line-height: 1.65;
-      color: var(--fg-muted);
-      margin-bottom: 88px;
-      max-width: 640px;
+      font-size: 20px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 96px;
+      letter-spacing: -0.005em;
     }
 
-    /* ── Phases ── */
-    .phases {
-      margin-bottom: 80px;
-    }
-    .phase {
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 28px;
+    /* ── Section numbering ── */
+    section { margin-bottom: 96px; }
+    .section-num {
+      display: flex;
       align-items: baseline;
-    }
-    .phase:last-child { border-bottom: 1px solid var(--border); }
-    .phase-when {
-      font-family: 'SF Mono', Menlo, monospace;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: var(--fg-muted);
-      letter-spacing: 0.12em;
-      line-height: 1.6;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 32px;
     }
-    .phase-when strong {
+    .section-num .num {
       color: var(--accent);
+      font-weight: 500;
+    }
+    .section-num .title {
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+
+    /* ── Lede with drop cap ── */
+    .lede {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 24px;
+    }
+    .lede::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 68px;
+      float: left;
+      line-height: 0.9;
+      padding: 8px 10px 0 0;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* ── Phases (editorial log) ── */
+    .log-entry {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .log-entry:last-child { border-bottom: 1px solid var(--rule); }
+    .log-when {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-top: 4px;
+    }
+    .log-when strong {
       display: block;
+      color: var(--accent);
       margin-bottom: 4px;
       font-weight: 600;
     }
-    .phase-title {
-      font-family: 'Charter', Georgia, serif;
-      font-size: 20px;
-      color: var(--fg);
+    .log-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
       font-weight: 500;
+      letter-spacing: -0.015em;
       margin-bottom: 6px;
-      letter-spacing: -0.005em;
+      color: var(--ink);
     }
-    .phase-body {
+    .log-body {
       font-size: 16px;
-      color: var(--fg-muted);
-      line-height: 1.65;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 520px;
     }
 
-    @media (max-width: 560px) {
-      .phase { grid-template-columns: 1fr; gap: 8px; }
-    }
-
-    /* ── Closing line ── */
-    .closing {
+    /* ── Attribution ── */
+    .attribution {
+      padding: 40px 0 0;
+      border-top: 1px solid var(--ink);
       font-size: 15px;
-      color: var(--fg-muted);
       line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 620px;
       margin-bottom: 64px;
-      padding: 24px 0 0;
-      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+    .attribution strong {
+      color: var(--ink);
+      font-style: normal;
+      font-weight: 500;
     }
 
-    /* ── Footer ── */
+    /* ── Colophon footer ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding-top: 40px;
-      font-family: 'SF Mono', Menlo, monospace;
-      font-size: 13px;
-      color: var(--fg-subtle);
-      line-height: 1.8;
-    }
-    footer .row {
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 16px;
-      letter-spacing: 0.04em;
-    }
-    footer a {
-      color: var(--fg);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-dim);
-      transition: all 0.2s ease;
-    }
-    footer a:hover {
-      border-bottom-color: var(--accent);
-      color: var(--accent);
-    }
-    .footer-note {
-      margin-top: 16px;
-      color: var(--fg-subtle);
+      gap: 32px;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
     }
-    .cursor {
-      color: var(--accent);
-      animation: blink 1.2s infinite step-end;
+    footer a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-soft);
+      transition: border-color 0.2s;
     }
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
+    footer a:hover { border-bottom-color: var(--accent); }
 
-    @media (max-width: 480px) {
-      body { padding: 48px 20px 40px; }
-      .mark { margin-bottom: 64px; }
-      .subhead { margin-bottom: 64px; }
+    @media (max-width: 640px) {
+      .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .log-entry { grid-template-columns: 1fr; gap: 8px; }
+      .lede::first-letter { font-size: 56px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <div class="mark">
-      <span class="mark-dot"></span>
-      <span class="mark-name">coworker1</span>
-      <nav class="mark-nav">
+    <div class="masthead">
+      <div class="masthead-brand">Coworker Labs</div>
+      <nav class="masthead-nav">
+        <a href="/">coworker1</a>
         <a href="/team.html">Team</a>
+        <a href="mailto:aparoop@coworker1.com">Partner</a>
       </nav>
-      <span class="mark-updated">Last updated 2026-04-19</span>
     </div>
 
-    <h1>
-      The AI teammate<br>
-      every solo operator<br>
-      has been missing.
-    </h1>
+    <div class="eyebrow">
+      The first product <span class="sep">·</span> Stealth <span class="sep">·</span> 2026
+    </div>
+
+    <h1>The AI teammate every solo operator has been <em>missing</em>.</h1>
 
     <p class="subhead">
-      Algorithmic trading and research infrastructure for the next generation
-      of systematic operators. Institutional flow, catalyst-speed news,
-      per-ticker Bayesian calibration &mdash; integrated, self-correcting,
-      personal.
+      Algorithmic trading and research infrastructure for the next generation of systematic operators — institutional flow, catalyst-speed news, per-ticker Bayesian calibration, all in one self-correcting system.
     </p>
 
-    <div class="phases">
-      <div class="phase">
-        <div class="phase-when">
-          <strong>PHASE 1</strong>
-          2026 &middot; NOW
-        </div>
+    <section>
+      <div class="section-num">
+        <span class="num">01</span>
+        <span class="title">The thesis</span>
+      </div>
+      <p class="lede">
+        Most people who build trading systems haven't traded. Most people who trade haven't built systems at scale. coworker1 is the first platform being built end-to-end by one operator who has done both — pointed at a problem the builder knows viscerally.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">02</span>
+        <span class="title">The roadmap</span>
+      </div>
+
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase I</strong>2026 · Now</div>
         <div>
-          <div class="phase-title">Solo Operator</div>
-          <div class="phase-body">
-            Live signals, adaptive thresholds, per-ticker Bayesian learning.
-            Single founder, in stealth.
-          </div>
+          <div class="log-title">Solo Operator</div>
+          <div class="log-body">Live signals, adaptive thresholds, per-ticker Bayesian learning. Single founder, in stealth.</div>
         </div>
       </div>
 
-      <div class="phase">
-        <div class="phase-when">
-          <strong>PHASE 2</strong>
-          Q3 2026
-        </div>
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase II</strong>Q3 2026</div>
         <div>
-          <div class="phase-title">Research Publication</div>
-          <div class="phase-body">
-            Anonymized calibration data for a subscriber audience. Educating
-            the next generation of disciplined traders.
-          </div>
+          <div class="log-title">Research Publication</div>
+          <div class="log-body">Anonymized calibration data for a subscriber audience. Educating the next generation of disciplined traders.</div>
         </div>
       </div>
 
-      <div class="phase">
-        <div class="phase-when">
-          <strong>PHASE 3</strong>
-          2027
-        </div>
+      <div class="log-entry">
+        <div class="log-when"><strong>Phase III</strong>2027</div>
         <div>
-          <div class="phase-title">Multi-seat Platform</div>
-          <div class="phase-body">
-            Shared intelligence layer. Collaborative signal generation across
-            a community of operators.
-          </div>
+          <div class="log-title">Multi-seat Platform</div>
+          <div class="log-body">Shared intelligence layer. Collaborative signal generation across a community of operators.</div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <p class="closing">
-      Built by a human, with AI coworkers built on Opus 4.7 &mdash; turned
-      what would have been a team effort into a one-person workbench.
+    <p class="attribution">
+      <strong>Built by a human, with AI coworkers built on Opus 4.7</strong> — turned what would have been a team effort into a one-person workbench.
     </p>
 
     <footer>
-      <div class="row">
-        <div>Partnership inquiries &rarr; <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
-        <div><a href="https://www.linkedin.com/in/aparoop" target="_blank" rel="noopener">LinkedIn</a> &middot; building<span class="cursor">▪</span></div>
-      </div>
-      <div class="footer-note">
-        &copy; 2026 coworker1 &middot; In stealth &middot; No forms, no trackers, no noise.
-      </div>
+      <div>© 2026 Coworker Labs</div>
+      <div>coworker1 <span style="color:var(--ink-mute)">&middot; first product, in stealth</span></div>
+      <div><a href="mailto:aparoop@coworker1.com">Partner</a></div>
     </footer>
 
   </div>
