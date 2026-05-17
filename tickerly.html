@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickerly — discipline for options traders · Aparoop</title>
+  <meta name="description" content="Tickerly is a self-correcting framework for active options traders. Built against real capital. In development.">
+  <meta property="og:title" content="Tickerly — Aparoop">
+  <meta property="og:description" content="A self-correcting decision framework for active options traders. In development.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F2EC;
+      --paper-alt: #EFEAE0;
+      --ink: #1A1A1A;
+      --ink-soft: #4A4A48;
+      --ink-mute: #7A7870;
+      --rule: #D6CFBF;
+      --accent: #2F4A6B;
+      --accent-soft: #6B8AB0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Fraunces', 'Charter', 'Iowan Old Style', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 56px 32px 64px;
+      font-feature-settings: "ss01", "ss02";
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+
+    /* ── Masthead ── */
+    .masthead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 88px;
+    }
+    .masthead-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .masthead-nav {
+      display: flex;
+      gap: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .masthead-nav a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .masthead-nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
+    .masthead-nav a:hover { border-bottom-color: var(--ink); }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .eyebrow .sep { color: var(--ink-mute); margin: 0 8px; }
+
+    /* ── Hero ── */
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 5.8vw, 68px);
+      font-weight: 400;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 36px;
+      font-variation-settings: "opsz" 144;
+    }
+    h1 em { font-style: italic; font-weight: 400; }
+    .subhead {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 80px;
+      letter-spacing: -0.005em;
+    }
+    .subhead strong { color: var(--ink); font-weight: 500; }
+
+    /* ── Section numbering ── */
+    section { margin-bottom: 80px; }
+    .section-num {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 32px;
+    }
+    .section-num .num { color: var(--accent); font-weight: 500; }
+    .section-num .title {
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+    .prose { font-size: 17px; line-height: 1.65; color: var(--ink); max-width: 620px; margin-bottom: 18px; }
+    .prose.dim { color: var(--ink-soft); }
+    .prose strong { font-weight: 500; color: var(--ink); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+    .prose a:hover { border-bottom-color: var(--accent); }
+
+    .lede {
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+    .lede::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 62px;
+      float: left;
+      line-height: 0.9;
+      padding: 8px 10px 0 0;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* ── Pullquote block ── */
+    .pullquote {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      padding: 24px 0 24px 28px;
+      border-left: 3px solid var(--accent);
+      margin: 28px 0;
+      font-style: italic;
+      max-width: 620px;
+    }
+    .pullquote em { font-style: normal; color: var(--accent); }
+
+    /* ── Principles (3 cards, no architecture detail) ── */
+    .principles {
+      display: grid;
+      gap: 0;
+      margin-top: 8px;
+    }
+    .principle {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .principle:last-child { border-bottom: 1px solid var(--rule); }
+    .principle-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .principle-title {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.018em;
+      margin-bottom: 12px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .principle-title em { font-style: italic; }
+    .principle-body {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 560px;
+    }
+    .principle-body strong { color: var(--ink); font-weight: 500; }
+
+    /* ── Stats block ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: 8px 0 20px;
+    }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 8px;
+    }
+    .stats-note {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      font-style: italic;
+      max-width: 620px;
+    }
+
+    /* ── "What it feels like" mockup row ── */
+    .feel {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 32px 32px 28px;
+      margin-top: 16px;
+    }
+    .feel-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .feel-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 110px;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px dashed var(--rule);
+      align-items: baseline;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+    .feel-row:first-of-type { border-top: none; }
+    .feel-ticker {
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+    .feel-verdict {
+      color: var(--ink-soft);
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+    .feel-tag {
+      text-align: right;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .feel-tag.enter { color: #2F6B45; }
+    .feel-tag.defer { color: var(--ink-mute); }
+    .feel-tag.skip { color: #8B3A3A; }
+    .feel-foot {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-size: 13px;
+      color: var(--ink-mute);
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    /* ── Roadmap list ── */
+    .roadmap {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .roadmap-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .roadmap-row:last-child { border-bottom: 1px solid var(--rule); }
+    .roadmap-phase {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .roadmap-body {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+    .roadmap-body strong { color: var(--ink); font-weight: 500; }
+
+    /* ── For-who block (ICP) ── */
+    .for-who {
+      display: grid;
+      gap: 12px;
+      max-width: 620px;
+    }
+    .for-who-row {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .for-who-row:last-child { border-bottom: 1px solid var(--rule); }
+    .for-who-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .for-who-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .for-who-text .dim { color: var(--ink-soft); }
+
+    /* ── CTA strip ── */
+    .cta-box {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 32px 32px 28px;
+      margin-top: 16px;
+    }
+    .cta-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .cta-title {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .cta-body {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+    }
+    .cta-links {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+    .cta-links a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-soft);
+      margin-right: 20px;
+      transition: border-color 0.2s;
+    }
+    .cta-links a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Colophon footer ── */
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+    footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-soft); transition: border-color 0.2s; }
+    footer a:hover { border-bottom-color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .masthead-nav { flex-wrap: wrap; gap: 18px; }
+      .roadmap-row { grid-template-columns: 1fr; gap: 6px; }
+      .stats { grid-template-columns: 1fr; gap: 18px; }
+      .feel-row { grid-template-columns: 70px 1fr; gap: 10px; }
+      .feel-tag { grid-column: 2; text-align: left; margin-top: 4px; }
+      .pullquote { font-size: 22px; padding-left: 20px; }
+      .principle-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="masthead">
+      <a href="/" class="masthead-brand">Aparoop</a>
+      <nav class="masthead-nav">
+        <a href="/#work">Work</a>
+        <a href="/tickerly.html" class="active">Tickerly</a>
+        <a href="/#loop">The Loop</a>
+        <a href="/about.html">About</a>
+        <a href="/#engage">Engage</a>
+      </nav>
+    </div>
+
+    <div class="eyebrow">
+      Tickerly <span class="sep">·</span> In development <span class="sep">·</span> Built in public
+    </div>
+
+    <h1>The hardest trade is the one you <em>don&rsquo;t</em> make.</h1>
+
+    <p class="subhead">
+      <strong>Tickerly</strong> is a decision framework for active options traders. It thinks before you do. It says no more often than yes. And every Sunday at 6 PM, it grades itself against what actually happened &mdash; and quietly fixes what was wrong. Built against my own capital. Productizing now.
+    </p>
+
+    <section>
+      <div class="section-num">
+        <span class="num">01</span>
+        <span class="title">Why this exists</span>
+      </div>
+
+      <p class="lede">
+        Retail options trading is a fair fight on the wrong terms. You have a charting app and your gut. The desk on the other side of your trade has a hundred screens, a calibration loop, and a written record of every time their thesis was wrong.
+      </p>
+
+      <p class="prose dim">
+        The asymmetry isn&rsquo;t information &mdash; it&rsquo;s discipline. Institutions don&rsquo;t guess less. They reject more. They track what worked, retire what didn&rsquo;t, and never trade their gut again. That&rsquo;s the part you can&rsquo;t buy on TradingView.
+      </p>
+
+      <div class="pullquote">
+        Most retail traders don&rsquo;t lose because they pick the wrong direction. They lose because they took the trade <em>at all</em>.
+      </div>
+
+      <p class="prose">
+        Tickerly is built around that one observation. The product is not signals. The product is the rejections. The framework looks at a setup and tells you, with reasons: <strong>enter</strong>, <strong>defer</strong>, or <strong>skip</strong>. Most days, it says skip. That&rsquo;s the feature.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">02</span>
+        <span class="title">What it feels like</span>
+      </div>
+
+      <p class="prose dim" style="margin-bottom:24px">
+        Friday morning, 8:30 AM PT. Here&rsquo;s the kind of read it produces on the names sitting on your screen.
+      </p>
+
+      <div class="feel">
+        <div class="feel-label">Sample · Friday morning verdicts</div>
+
+        <div class="feel-row">
+          <div class="feel-ticker">CSCO</div>
+          <div class="feel-verdict">Cheap entry &mdash; vol is mispriced, momentum confirms.</div>
+          <div class="feel-tag enter">Enter</div>
+        </div>
+        <div class="feel-row">
+          <div class="feel-ticker">PENG</div>
+          <div class="feel-verdict">Top forming on premium &mdash; stop adding, start trimming.</div>
+          <div class="feel-tag skip">Trim</div>
+        </div>
+        <div class="feel-row">
+          <div class="feel-ticker">NVDA</div>
+          <div class="feel-verdict">Binary risk in window &mdash; reduce size, take a third off.</div>
+          <div class="feel-tag defer">Defer</div>
+        </div>
+        <div class="feel-row">
+          <div class="feel-ticker">QS</div>
+          <div class="feel-verdict">Premium too rich for direction &mdash; let it bleed.</div>
+          <div class="feel-tag skip">Skip</div>
+        </div>
+        <div class="feel-row">
+          <div class="feel-ticker">PANW</div>
+          <div class="feel-verdict">Catalyst still loaded &mdash; wait for the unwind.</div>
+          <div class="feel-tag defer">Wait</div>
+        </div>
+
+        <div class="feel-foot">
+          Four out of five reads, the answer is <em>not now</em>. That&rsquo;s not a bug. The fifth one &mdash; the one with the reasons stacked &mdash; pays for the other four.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">03</span>
+        <span class="title">Three principles</span>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <div class="principle-num">Principle 01</div>
+          <div class="principle-title">Discipline beats prediction.</div>
+          <div class="principle-body">
+            Tickerly doesn&rsquo;t guess where a stock is going. It measures whether the setup is the kind that has historically paid. The forecast is the byproduct, not the product. Most days, the most valuable output is the trade you didn&rsquo;t take.
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="principle-num">Principle 02</div>
+          <div class="principle-title">Rejection <em>is</em> the product.</div>
+          <div class="principle-body">
+            A good framework rejects more trades than it accepts. Tickerly is calibrated so that on a typical day, four out of five candidates don&rsquo;t clear the bar. That&rsquo;s the part retail traders can&rsquo;t replicate alone &mdash; the will to stand aside when the math doesn&rsquo;t work.
+          </div>
+        </div>
+
+        <div class="principle">
+          <div class="principle-num">Principle 03</div>
+          <div class="principle-title">Self-correction or death.</div>
+          <div class="principle-body">
+            Every Sunday at 6 PM ET, the framework grades itself against the previous week&rsquo;s outcomes. Patterns that drifted off get adjusted. Tiers that over-claimed get demoted. The framework that ships next week is not the one that shipped this week. That&rsquo;s the loop. Without it, nothing else matters.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">04</span>
+        <span class="title">Current state</span>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-num">20</div>
+          <div class="stat-label">closed trades</div>
+        </div>
+        <div>
+          <div class="stat-num">80%</div>
+          <div class="stat-label">overall win rate</div>
+        </div>
+        <div>
+          <div class="stat-num">+38%</div>
+          <div class="stat-label">P&amp;L, 35 days</div>
+        </div>
+      </div>
+
+      <p class="stats-note">
+        The CALL side is calibrating cleanly. The PUT side is underperforming and the framework has trimmed its own exposure there until the pattern resolves. Numbers refresh on the calibration scorecard every Sunday 6 PM ET. The framework is disciplined enough to trim its own losers; honest enough to publish them.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">05</span>
+        <span class="title">The roadmap to product</span>
+      </div>
+
+      <p class="prose">
+        Tickerly is in early development. The framework runs daily in my workbench against my own capital. The productization is what sits between operator-grade dashboards, decision-grade UX, and the permission layer that lets it scale beyond one operator.
+      </p>
+
+      <div class="roadmap">
+        <div class="roadmap-row">
+          <div class="roadmap-phase">Phase 1<br>NOW</div>
+          <div class="roadmap-body">
+            <strong>Single-operator validation.</strong> Running live against my own capital. The decision harness, calibration loop, and per-skill rollups are all in production. Stats above refresh weekly.
+          </div>
+        </div>
+        <div class="roadmap-row">
+          <div class="roadmap-phase">Phase 2<br>Q3 2026</div>
+          <div class="roadmap-body">
+            <strong>Private beta.</strong> Invite a small group of prosumer traders to a hosted version. Pricing model TBD. <em>If you want in early, send a note.</em>
+          </div>
+        </div>
+        <div class="roadmap-row">
+          <div class="roadmap-phase">Phase 3<br>Q4 2026</div>
+          <div class="roadmap-body">
+            <strong>Public launch.</strong> Self-serve subscriptions, public calibration dashboard, paper-trading sandbox. Documentation. Community.
+          </div>
+        </div>
+        <div class="roadmap-row">
+          <div class="roadmap-phase">Later</div>
+          <div class="roadmap-body">
+            <strong>Operator network.</strong> Other disciplined traders publish their strategies as orchestration recipes with full calibration visibility. Not a copy-trade product &mdash; a transparency-first marketplace.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">06</span>
+        <span class="title">Early access</span>
+      </div>
+
+      <div class="cta-box">
+        <div class="cta-label">Inquiry</div>
+        <div class="cta-title">Beta list opens Q3 2026. Lines are forming.</div>
+        <div class="cta-body">
+          If you want to be in the first cohort &mdash; or you&rsquo;re a capital partner evaluating the orchestration stack under NDA &mdash; send a note via the contact form on the home page. Indicate which kind of inquiry. Replies come from a human within 48 hours.
+        </div>
+        <div class="cta-links">
+          <a href="/#engage">Send inquiry &rarr;</a>
+          <a href="/#loop">Read The Loop</a>
+          <a href="/">&larr; Home</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Aparoop Chakraborty</div>
+      <div>Tickerly · <em>built in public</em></div>
+      <div><a href="/about.html">About</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>

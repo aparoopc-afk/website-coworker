@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coworker Labs — AI transformation and operational loops for mid-market</title>
-  <meta name="description" content="Coworker Labs architects AI orchestration and operational loops for mid-market organizations. Fractional CAIO, orchestration architecture, feedback-loop design. Flip Picker is our live demo. Stealth, 2026.">
-  <meta property="og:title" content="Coworker Labs">
-  <meta property="og:description" content="AI transformation and operational loops for mid-market. Flip Picker — our live demo, running against real capital. Fractional engagements.">
+  <title>Aparoop — AI transformation, built and shipped</title>
+  <meta name="description" content="Aparoop Chakraborty. Fractional AI transformation partner. Builder of Tickerly. Writer of The Loop. Mid-market AI orchestration that actually ships.">
+  <meta property="og:title" content="Aparoop">
+  <meta property="og:description" content="Fractional AI partner. Builder of Tickerly. Writer of The Loop. Mid-market AI orchestration that ships.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +55,7 @@
     }
     .masthead-nav {
       display: flex;
-      gap: 28px;
+      gap: 26px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.14em;
@@ -71,16 +71,31 @@
     }
     .masthead-nav a:hover { border-bottom-color: var(--ink); }
 
-    /* ── Eyebrow ── */
-    .eyebrow {
+    /* ── Identity pills (Partner · Builder · Writer) ── */
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 36px;
+      flex-wrap: wrap;
     }
-    .eyebrow .sep { color: var(--ink-mute); margin: 0 8px; }
+    .identity .pill {
+      padding: 6px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 100px;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+    }
+    .identity .year {
+      color: var(--ink-mute);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+    }
 
     /* ── Hero ── */
     h1 {
@@ -104,6 +119,10 @@
       max-width: 620px;
       margin-bottom: 96px;
       letter-spacing: -0.005em;
+    }
+    .subhead strong {
+      color: var(--ink);
+      font-weight: 500;
     }
 
     /* ── Section numbering ── */
@@ -160,6 +179,8 @@
     }
     .prose.dim { color: var(--ink-soft); }
     .prose strong { font-weight: 500; color: var(--ink); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+    .prose a:hover { border-bottom-color: var(--accent); }
 
     /* ── Service entries ── */
     .service {
@@ -203,7 +224,7 @@
       text-transform: uppercase;
     }
 
-    /* ── Demo callout (Flip Picker block) ── */
+    /* ── Demo callout (Tickerly block) ── */
     .demo {
       background: var(--paper-alt);
       border: 1px solid var(--rule);
@@ -259,12 +280,81 @@
       color: var(--ink-mute);
       margin-top: 6px;
     }
-    .demo-footnote {
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--ink-mute);
-      font-style: italic;
+    .demo-link {
+      margin-top: 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .demo-link a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-soft);
+      transition: border-color 0.2s;
+    }
+    .demo-link a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Loop newsletter section ── */
+    .loop {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 40px 36px 36px;
+      position: relative;
+    }
+    .loop-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .loop-title {
+      font-family: 'Fraunces', serif;
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .loop-title em { font-style: italic; }
+    .loop-body {
+      font-size: 17px;
       line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+      max-width: 580px;
+    }
+    .loop-body strong { color: var(--ink); font-weight: 500; }
+    .loop-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .loop-cta:hover { background: var(--accent); }
+    .loop-cta .arrow { font-size: 14px; }
+    .loop-meta {
+      margin-top: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
     }
 
     /* ── ICP list ── */
@@ -289,6 +379,87 @@
       font-size: 14px;
       color: var(--ink-soft);
       line-height: 1.55;
+    }
+
+    /* ── Engage / contact form ── */
+    .engage {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 36px 36px 32px;
+    }
+    .engage-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .engage-title {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .engage-body {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin-bottom: 22px;
+      max-width: 540px;
+    }
+    .engage form { display: grid; gap: 12px; max-width: 540px; }
+    .engage label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-top: 4px;
+    }
+    .engage input, .engage textarea, .engage select {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      padding: 11px 14px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: var(--paper);
+      color: var(--ink);
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .engage input:focus, .engage textarea:focus, .engage select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .engage textarea { min-height: 100px; resize: vertical; font-family: 'Fraunces', serif; }
+    .engage button {
+      margin-top: 6px;
+      padding: 13px 22px;
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+      justify-self: start;
+    }
+    .engage button:hover { background: var(--accent); }
+    .engage-note {
+      margin-top: 14px;
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      color: var(--ink-mute);
+      max-width: 540px;
     }
 
     /* ── Attribution ── */
@@ -332,11 +503,15 @@
 
     @media (max-width: 640px) {
       .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .masthead-nav { flex-wrap: wrap; gap: 18px; }
+      .identity { gap: 10px; }
+      .identity .pill { font-size: 10px; padding: 5px 11px; }
       .service { grid-template-columns: 1fr; gap: 10px; }
       .lede::first-letter { font-size: 52px; }
-      .demo { padding: 28px 24px 24px; }
+      .demo, .loop, .engage { padding: 28px 24px 24px; }
       .demo-stats { grid-template-columns: 1fr; gap: 16px; }
       .icp { grid-template-columns: 1fr; }
+      .loop-title { font-size: 28px; }
     }
   </style>
 </head>
@@ -344,42 +519,56 @@
   <div class="container">
 
     <div class="masthead">
-      <a href="/" class="masthead-brand">Coworker Labs</a>
+      <a href="/" class="masthead-brand">Aparoop</a>
       <nav class="masthead-nav">
         <a href="#work">Work</a>
-        <a href="/flippicker.html">Flip Picker</a>
-        <a href="/team.html">Team</a>
-        <a href="mailto:aparoop@coworker1.com">Partner</a>
+        <a href="/tickerly.html">Tickerly</a>
+        <a href="#loop">The Loop</a>
+        <a href="/about.html">About</a>
+        <a href="#engage">Engage</a>
       </nav>
     </div>
 
-    <div class="eyebrow">
-      AI Architect <span class="sep">·</span> Ex-Google <span class="sep">·</span> 4 yrs advisory &amp; GTM <span class="sep">·</span> Fractional, 2026
+    <div class="identity">
+      <span class="pill">Partner</span>
+      <span class="pill">Builder</span>
+      <span class="pill">Writer</span>
+      <span class="year">Fractional · 2026</span>
     </div>
 
     <h1>Most AI pilots don&rsquo;t make it to production. The problem isn&rsquo;t the model &mdash; it&rsquo;s the <em>loop</em>.</h1>
 
     <p class="subhead">
-      Coworker Labs architects operational loops and AI orchestration for mid-market organizations &mdash; the companies who need AI to ship, not pitch. Fractional engagements. Working systems. Accountable to outcomes.
+      I&rsquo;m <strong>Aparoop</strong>. I help mid-market organizations build the operational loops that turn AI pilots into production systems. I also build them myself &mdash; <strong>Tickerly</strong> is the latest. I write <strong>The Loop</strong> weekly about what actually ships. Fractional engagements. Working systems. Accountable to outcomes.
     </p>
 
     <section id="thesis">
       <div class="section-num">
         <span class="num">01</span>
-        <span class="title">The thesis</span>
+        <span class="title">The premise</span>
       </div>
       <p class="lede">
-        Most AI transformation work stalls because the architecture stops at the model. The engineering that separates a demo from a production system is the operational loop: how data flows in, how output is evaluated, how the system corrects itself, and how the humans running it stay in control.
+        70% of AI success or failure in enterprises is change management &mdash; not the model, not the vendor, not the tooling. The gap is muscle. The companies that win don&rsquo;t pick the smartest tool. They pick the one their people actually use a year from now.
+      </p>
+      <p class="prose">
+        I help build that muscle in two directions. <strong>Top-down</strong>: mindset, governance, executive alignment, the courage to retire what isn&rsquo;t working. <strong>Bottom-up</strong>: workflows, adoption, the operational loops that make new behaviors stick.
+      </p>
+      <p class="prose">
+        Two outcomes show up on the P&amp;L:
+      </p>
+      <p class="prose" style="margin-left:8px">
+        <strong>&rarr;</strong>&nbsp;&nbsp;Cost of services trending down <span class="dim">(efficiency unlocked, not just demos shipped)</span><br>
+        <strong>&rarr;</strong>&nbsp;&nbsp;User adoption trending up <span class="dim">(employees actually using the system, not just executives buying it)</span>
       </p>
       <p class="prose dim">
-        Coworker Labs is built around that gap. We design the orchestration layer &mdash; agents, pipelines, calibration, guardrails, and the feedback loops that keep AI systems honest after deployment. Not slides. Running systems.
+        Everything I do &mdash; orchestration architecture, loop design, Tickerly itself &mdash; is in service of those two numbers.
       </p>
     </section>
 
     <section id="work">
       <div class="section-num">
         <span class="num">02</span>
-        <span class="title">What we do</span>
+        <span class="title">What I do</span>
       </div>
 
       <div class="service">
@@ -409,31 +598,69 @@
         <div>
           <div class="service-title">Feedback loops for deployed AI</div>
           <div class="service-body">
-            For teams with models in production but no calibration layer. We diagnose what&rsquo;s missing &mdash; evaluation, drift detection, self-correction, human-in-loop gates &mdash; and implement the missing layers.
+            For teams with models in production but no calibration layer. I diagnose what&rsquo;s missing &mdash; evaluation, drift detection, self-correction, human-in-loop gates &mdash; and implement the missing layers.
           </div>
           <div class="service-meta">Diagnostic + implementation · 4&ndash;8 weeks</div>
         </div>
       </div>
     </section>
 
-    <section id="demo">
+    <section id="tickerly">
       <div class="section-num">
         <span class="num">03</span>
-        <span class="title">The live demo</span>
+        <span class="title">What I&rsquo;m building</span>
       </div>
 
-      <p class="prose">
-        <strong>Flip Picker</strong> is one concrete example of what we build &mdash; an algorithmic trading platform architected and operated end-to-end, running against real capital since Q1 2026. A real AI system solving a real problem under real-world pressure. The same orchestration discipline we bring to client engagements, tested in an environment where the system has to be right or it loses money.
-      </p>
-      <p class="prose dim">
-        Full architecture, current state, and data-partner list &rarr; <a href="/flippicker.html" style="color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft);">flippicker</a>. Walk-through and performance data under NDA.
-      </p>
+      <div class="demo">
+        <div class="demo-label">Tickerly · In Development</div>
+        <div class="demo-title">Tickerly &mdash; an institutional-grade trading framework for the rest of us.</div>
+        <div class="demo-body">
+          <strong>Tickerly</strong> productizes the algorithmic trading framework I&rsquo;ve been running against my own capital since Q1 2026 &mdash; institutional flow, options Greeks, short-interest dynamics, catalyst-speed news, and per-ticker Bayesian calibration, stitched into a single self-correcting system. The goal: give retail and prosumer options traders the same orchestration discipline hedge funds use, without the hedge-fund overhead.
+        </div>
+        <div class="demo-stats">
+          <div>
+            <div class="stat-num">20</div>
+            <div class="stat-label">closed trades</div>
+          </div>
+          <div>
+            <div class="stat-num">80%</div>
+            <div class="stat-label">overall win rate</div>
+          </div>
+          <div>
+            <div class="stat-num">+38%</div>
+            <div class="stat-label">P&amp;L, 35 days</div>
+          </div>
+        </div>
+        <div class="demo-link">
+          <a href="/tickerly.html">Read the architecture &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="loop">
+      <div class="section-num">
+        <span class="num">04</span>
+        <span class="title">The Loop</span>
+      </div>
+
+      <div class="loop">
+        <div class="loop-label">Newsletter · Weekly</div>
+        <div class="loop-title"><em>The Loop</em> by Aparoop</div>
+        <div class="loop-body">
+          A weekly note on AI orchestration, operational design, and what&rsquo;s actually shipping versus what&rsquo;s stalled in pilots. Specific patterns I&rsquo;ve seen work, specific failures worth avoiding, and what I&rsquo;m learning from building Tickerly in public. <strong>Published on LinkedIn.</strong>
+        </div>
+        <a class="loop-cta" href="https://www.linkedin.com/in/aparoop" target="_blank" rel="noopener">
+          <span>Subscribe on LinkedIn</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+        <div class="loop-meta">No fluff. No re-treads of headlines. Reply if you want to discuss.</div>
+      </div>
     </section>
 
     <section id="icp">
       <div class="section-num">
-        <span class="num">04</span>
-        <span class="title">Who we partner with</span>
+        <span class="num">05</span>
+        <span class="title">Who I partner with</span>
       </div>
       <p class="prose dim" style="margin-bottom:28px">
         Mid-market organizations ($100M&ndash;$1B revenue), typically engaged by:
@@ -458,14 +685,58 @@
       </div>
     </section>
 
+    <section id="engage">
+      <div class="section-num">
+        <span class="num">06</span>
+        <span class="title">Engage</span>
+      </div>
+
+      <div class="engage">
+        <div class="engage-label">Inquiry · Fractional engagement</div>
+        <div class="engage-title">Two engagement slots open. What are you trying to ship?</div>
+        <div class="engage-body">
+          A short note about your situation is enough to start. I reply within 48 hours; a 30-min scoping call follows if there&rsquo;s mutual fit.
+        </div>
+
+        <!-- Formspree integration: replace YOUR_FORM_ID with your actual Formspree form ID -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <label for="name">Your name</label>
+          <input id="name" type="text" name="name" required>
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required>
+
+          <label for="org">Organization (optional)</label>
+          <input id="org" type="text" name="organization">
+
+          <label for="engagement">Engagement type</label>
+          <select id="engagement" name="engagement_type">
+            <option value="fractional_caio">Fractional CAIO</option>
+            <option value="orchestration">Orchestration architecture</option>
+            <option value="loop_design">Operational loop design</option>
+            <option value="other">Something else</option>
+          </select>
+
+          <label for="message">What are you working on?</label>
+          <textarea id="message" name="message" required placeholder="A few sentences about your situation, current AI initiatives, and what success looks like."></textarea>
+
+          <button type="submit">Send inquiry &rarr;</button>
+        </form>
+
+        <div class="engage-note">
+          Form delivered via Formspree. No tracking pixels, no analytics. Replies come from a human (me).
+        </div>
+      </div>
+    </section>
+
     <p class="attribution">
-      <strong>Built by a human, with AI coworkers</strong> &mdash; turned what would have been a team effort into a one-person workbench. Orchestrating humans and AI in the same workflow is the discipline. It&rsquo;s also what we bring to clients.
+      <strong>Built by a human, with AI coworkers.</strong> One operator, a stack of AI tools, turned what would have been a team into a workbench. Orchestrating humans and AI in the same workflow is the discipline. It&rsquo;s also what I bring to client work.
     </p>
 
     <footer>
-      <div>© 2026 Coworker Labs</div>
-      <div>Fractional engagements &middot; <a href="mailto:aparoop@coworker1.com">aparoop@coworker1.com</a></div>
-      <div><a href="/team.html">Team</a></div>
+      <div>© 2026 Aparoop Chakraborty</div>
+      <div>Fractional engagements · <a href="#engage">Send inquiry</a></div>
+      <div><a href="/about.html">About</a></div>
     </footer>
 
   </div>
