@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — fractional AI partnership for the decade-long bet · Aparoop</title>
+  <meta name="description" content="AI transformation is a decade-long change-management project. Most companies budget it like a quarterly initiative. I help CEOs build the operational muscle that turns AI into operating leverage.">
+  <meta property="og:title" content="Work — Aparoop">
+  <meta property="og:description" content="Quarterly AI budgets yield quarter-good AI. Fractional partnership for the decade-long bet.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>▪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F2EC;
+      --paper-alt: #EFEAE0;
+      --ink: #1A1A1A;
+      --ink-soft: #4A4A48;
+      --ink-mute: #7A7870;
+      --rule: #D6CFBF;
+      --accent: #2F4A6B;
+      --accent-soft: #6B8AB0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Fraunces', 'Charter', 'Iowan Old Style', Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      min-height: 100vh;
+      padding: 56px 32px 64px;
+      font-feature-settings: "ss01", "ss02";
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+
+    /* ── Masthead ── */
+    .masthead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 88px;
+    }
+    .masthead-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .masthead-nav {
+      display: flex;
+      gap: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .masthead-nav a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .masthead-nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
+    .masthead-nav a:hover { border-bottom-color: var(--ink); }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .eyebrow .sep { color: var(--ink-mute); margin: 0 8px; }
+
+    /* ── Hero ── */
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 6.0vw, 72px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 36px;
+      font-variation-settings: "opsz" 144;
+    }
+    h1 em { font-style: italic; font-weight: 400; }
+    .subhead {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 620px;
+      margin-bottom: 88px;
+      letter-spacing: -0.005em;
+    }
+    .subhead strong { color: var(--ink); font-weight: 500; }
+
+    /* ── Section numbering ── */
+    section { margin-bottom: 80px; }
+    .section-num {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 32px;
+    }
+    .section-num .num { color: var(--accent); font-weight: 500; }
+    .section-num .title {
+      color: var(--ink);
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: none;
+    }
+
+    /* ── Prose ── */
+    .lede {
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--ink);
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+    .lede::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 62px;
+      float: left;
+      line-height: 0.9;
+      padding: 8px 10px 0 0;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .prose { font-size: 17px; line-height: 1.65; color: var(--ink); max-width: 620px; margin-bottom: 20px; }
+    .prose.dim { color: var(--ink-soft); }
+    .prose strong { font-weight: 500; color: var(--ink); }
+    .prose em { color: var(--accent); font-style: italic; }
+
+    /* ── Pullquote ── */
+    .pullquote {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      line-height: 1.25;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      padding: 24px 0 24px 28px;
+      border-left: 3px solid var(--accent);
+      margin: 28px 0;
+      font-style: italic;
+      max-width: 620px;
+    }
+    .pullquote em { font-style: normal; color: var(--accent); }
+
+    /* ── Math chart (70/30 + 60/30/10) ── */
+    .math-chart {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 32px 32px 28px;
+      margin: 28px 0 36px;
+    }
+    .math-chart-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin-bottom: 22px;
+    }
+    .math-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 50px;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .math-row.secondary { grid-template-columns: 150px 1fr 50px; padding-left: 24px; }
+    .math-label {
+      font-family: 'Fraunces', serif;
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .math-row.secondary .math-label {
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+    .math-bar-bg {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      height: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .math-bar {
+      background: var(--accent);
+      height: 100%;
+      width: var(--w);
+      transition: width 0.4s ease;
+    }
+    .math-row.secondary .math-bar { background: var(--accent-soft); }
+    .math-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      font-weight: 500;
+      text-align: right;
+    }
+    .math-divider {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      margin: 22px 0 16px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--rule);
+    }
+    .math-foot {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-mute);
+      font-style: italic;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      line-height: 1.55;
+    }
+
+    /* ── Bullet list ── */
+    .bullets {
+      max-width: 620px;
+      margin: 16px 0 20px;
+      display: grid;
+      gap: 10px;
+    }
+    .bullets-row {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .bullets-arrow {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .bullets-row strong { font-weight: 500; }
+    .bullets-row.dim { color: var(--ink-soft); }
+
+    /* ── Service entries ── */
+    .service {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+    .service:last-child { border-bottom: 1px solid var(--rule); }
+    .service-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      padding-top: 4px;
+    }
+    .service-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .service-body {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 520px;
+    }
+    .service-body strong { color: var(--ink); font-weight: 500; }
+    .service-meta {
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+
+    /* ── Engagement phases ── */
+    .phases {
+      display: grid;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .phase {
+      display: grid;
+      grid-template-columns: 50px 140px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .phase:last-child { border-bottom: 1px solid var(--rule); }
+    .phase-num {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .phase-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .phase-name-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      font-weight: 400;
+    }
+    .phase-body {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 460px;
+    }
+    .phase-body strong { color: var(--ink); font-weight: 500; }
+
+    /* ── CTA strip ── */
+    .cta-box {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      padding: 32px 32px 28px;
+      margin-top: 16px;
+    }
+    .cta-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .cta-title {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .cta-body { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 18px; }
+    .cta-links { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; }
+    .cta-links a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-soft);
+      margin-right: 20px;
+      transition: border-color 0.2s;
+    }
+    .cta-links a:hover { border-bottom-color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+    footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent-soft); transition: border-color 0.2s; }
+    footer a:hover { border-bottom-color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .masthead { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .masthead-nav { flex-wrap: wrap; gap: 18px; }
+      .math-row, .math-row.secondary { grid-template-columns: 110px 1fr 40px; gap: 10px; padding-left: 0; }
+      .math-row.secondary .math-label { font-size: 12px; }
+      .service { grid-template-columns: 1fr; gap: 10px; }
+      .phase { grid-template-columns: 1fr; gap: 10px; }
+      .phase-num { font-size: 24px; }
+      .pullquote { font-size: 22px; padding-left: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="masthead">
+      <a href="/" class="masthead-brand">Aparoop</a>
+      <nav class="masthead-nav">
+        <a href="/work.html" class="active">Work</a>
+        <a href="/tickerly.html">Tickerly</a>
+        <a href="/#loop">The Loop</a>
+        <a href="/about.html">About</a>
+        <a href="/#engage">Engage</a>
+      </nav>
+    </div>
+
+    <div class="eyebrow">
+      Work <span class="sep">·</span> Fractional partnership <span class="sep">·</span> 2026
+    </div>
+
+    <h1>Quarterly AI budgets yield <em>quarter-good</em> AI.</h1>
+
+    <p class="subhead">
+      AI transformation is a decade-long change-management project. Most companies budget it like a quarterly initiative &mdash; and get the AI they paid for. <strong>I work with CEOs who see the longer game</strong>: building the operational muscle that turns AI from a line item into operating leverage.
+    </p>
+
+    <section>
+      <div class="section-num">
+        <span class="num">01</span>
+        <span class="title">The math nobody wants to talk about</span>
+      </div>
+
+      <p class="lede">
+        70% of AI success or failure in enterprises is change management. The remaining 30% is technology. And inside that 30%, the model &mdash; the part everyone talks about &mdash; is the smallest piece.
+      </p>
+
+      <div class="math-chart">
+        <div class="math-chart-label">AI Success in Enterprises &mdash; allocation of effort that actually moves the needle</div>
+
+        <div class="math-row">
+          <div class="math-label">Change management</div>
+          <div class="math-bar-bg"><div class="math-bar" style="--w: 100%"></div></div>
+          <div class="math-value">70%</div>
+        </div>
+        <div class="math-row">
+          <div class="math-label">Technology</div>
+          <div class="math-bar-bg"><div class="math-bar" style="--w: 43%"></div></div>
+          <div class="math-value">30%</div>
+        </div>
+
+        <div class="math-divider">Inside the 30% technology layer</div>
+
+        <div class="math-row secondary">
+          <div class="math-label">Data</div>
+          <div class="math-bar-bg"><div class="math-bar" style="--w: 60%"></div></div>
+          <div class="math-value">60%</div>
+        </div>
+        <div class="math-row secondary">
+          <div class="math-label">Orchestration</div>
+          <div class="math-bar-bg"><div class="math-bar" style="--w: 30%"></div></div>
+          <div class="math-value">30%</div>
+        </div>
+        <div class="math-row secondary">
+          <div class="math-label">The model</div>
+          <div class="math-bar-bg"><div class="math-bar" style="--w: 10%"></div></div>
+          <div class="math-value">10%</div>
+        </div>
+
+        <p class="math-foot">
+          The model manages your cost. Orchestration determines whether the system actually solves the real problem. Data determines whether either of them has anything to work with.
+        </p>
+      </div>
+
+      <p class="prose">
+        Most AI strategy decks optimize the 10%. They debate vendors, benchmark models, negotiate seat licenses. Meanwhile the 90% &mdash; the data plumbing, the orchestration loop, the organizational muscle to actually use the system &mdash; goes unaddressed.
+      </p>
+
+      <div class="pullquote">
+        The industry talks about the 10%. <em>I work on the other 90%.</em>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">02</span>
+        <span class="title">In a decade, every employee will manage an agent</span>
+      </div>
+
+      <p class="lede">
+        Not <em>use</em> one. <em>Manage</em> one. Guide it. Evaluate it. Grade it. Decide when it&rsquo;s right, when it&rsquo;s wrong, when to escalate, when to retire it.
+      </p>
+
+      <p class="prose">
+        That&rsquo;s a different organizational design than the one most legacy companies are built around. It requires:
+      </p>
+
+      <div class="bullets">
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span><strong>Leaders</strong> who set the agenda for what gets automated &mdash; and what stays human.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span><strong>Operators</strong> who design the workflows where employees hand off the grunt work &mdash; writing, calculating, summarizing, following up &mdash; while keeping the core of their job.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span><strong>Employees</strong> who treat AI as a teammate they manage, not a tool they use.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span><strong>A culture</strong> that grades systems against outcomes, not adoption rates.</span>
+        </div>
+      </div>
+
+      <p class="prose">
+        That&rsquo;s a mindset shift, not a tooling decision. It&rsquo;s the kind of change that takes years to build and can&rsquo;t be downloaded from a vendor. The companies that build this muscle in 2026-2028 will operate at a different cost basis by 2030.
+      </p>
+
+      <p class="prose dim">
+        The ones that don&rsquo;t will be acquired by the ones that did.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">03</span>
+        <span class="title">The gap I close</span>
+      </div>
+
+      <p class="prose">
+        Most AI consultants come from data science or software engineering. They&rsquo;re excellent at the 10% &mdash; picking models, building pipelines. They&rsquo;ve usually never run an operation.
+      </p>
+
+      <p class="prose">
+        Most operations consultants come from process improvement or management consulting. They&rsquo;re excellent at workflows &mdash; Six Sigma, lean transformation, change rollouts. They usually don&rsquo;t understand AI deeply enough to design around it.
+      </p>
+
+      <p class="prose">
+        The two rarely cross-pollinate. What you actually need is someone who can:
+      </p>
+
+      <div class="bullets">
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>Read a P&amp;L and tell you where AI fits &mdash; not in slides, in line items.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>Design the operational loop where humans hand the grunt work to AI and AI hands the edge cases back.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>Build the orchestration layer that makes the system self-correcting after deployment, not just at launch.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>Ship the proof against real capital &mdash; not slides &mdash; before recommending it to yours.</span>
+        </div>
+      </div>
+
+      <p class="prose">
+        Ten years at <strong>Google</strong> scaling operations. <strong>IIT</strong> for the engineering first principles. <strong>ISB</strong> for the business architecture layer. <strong>Tickerly</strong> running today against my own capital as proof the methodology works in production.
+      </p>
+
+      <div class="pullquote">
+        Reading a P&amp;L and shipping code in the same week is the rare cross-pollination AI transformation <em>actually requires</em>.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">04</span>
+        <span class="title">What I actually do</span>
+      </div>
+
+      <div class="service">
+        <div class="service-label">Fractional<br>CAIO</div>
+        <div>
+          <div class="service-title">Chief AI Officer, part-time</div>
+          <div class="service-body">
+            Strategic AI leadership for mid-market companies that can&rsquo;t justify a full-time CAIO. Board-ready roadmaps, vendor selection, hire-or-build calls, risk framing. <strong>The leader who sets the agenda for what gets automated.</strong>
+          </div>
+          <div class="service-meta">10&ndash;20 hrs/week · 3&ndash;6 month minimum</div>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-label">Operational<br>AI Design</div>
+        <div>
+          <div class="service-title">Workflows that ship and improve</div>
+          <div class="service-body">
+            End-to-end design of the operational loops where humans hand grunt work to AI: agents, evaluation, drift detection, calibration, human-in-loop gates. <strong>Delivered as a working reference architecture integrated with your stack &mdash; not a slide.</strong>
+          </div>
+          <div class="service-meta">Fixed-scope · 6&ndash;12 weeks</div>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-label">Build<br>Alongside</div>
+        <div>
+          <div class="service-title">For teams who need a co-pilot</div>
+          <div class="service-body">
+            For engineering and product teams that already have AI in production but need orchestration discipline. I work alongside your team for a defined period &mdash; pair-architect, code review, write the loop. <strong>Like having a senior engineer who&rsquo;s built this before, embedded.</strong>
+          </div>
+          <div class="service-meta">Embedded · 4&ndash;12 weeks</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">05</span>
+        <span class="title">Who I work with</span>
+      </div>
+
+      <p class="lede">
+        I work with CEOs, COOs, and operating partners who see the decade-long bet before their peers do.
+      </p>
+
+      <p class="prose">
+        Companies and leaders I partner with usually share three traits:
+      </p>
+
+      <div class="bullets">
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>They want <strong>operating leverage</strong>, not press releases. The goal is a different cost basis, not a media moment.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>They&rsquo;re willing to invest in <strong>change management</strong> alongside technology &mdash; not just buy tooling and hope adoption follows.</span>
+        </div>
+        <div class="bullets-row">
+          <span class="bullets-arrow">&rarr;</span>
+          <span>They treat AI transformation as <strong>multi-year</strong> infrastructure &mdash; the way they treated cloud migration, or ERP rollouts, or any other change that reshaped how their organization works.</span>
+        </div>
+      </div>
+
+      <p class="prose dim">
+        If any of that resonates &mdash; or if you&rsquo;re weighing whether the path you&rsquo;re on is the right one &mdash; the engage form below is the place to start. A short note about your situation is enough.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">06</span>
+        <span class="title">How we work together</span>
+      </div>
+
+      <p class="prose dim" style="margin-bottom:24px">
+        Every engagement runs through three phases. The cadence and depth scale to fit your situation, but the shape is consistent.
+      </p>
+
+      <div class="phases">
+        <div class="phase">
+          <div class="phase-num">01</div>
+          <div>
+            <div class="phase-name">Assessment</div>
+            <div class="phase-name-sub">Weeks 1&ndash;2</div>
+          </div>
+          <div class="phase-body">
+            A short, intense diagnostic. Where AI is today in your organization (audit). Where the change-management muscle exists and where it doesn&rsquo;t. Which loops in the business are real candidates for AI handoff. <strong>Output: a written assessment with three to five concrete recommendations.</strong>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">02</div>
+          <div>
+            <div class="phase-name">Architecture</div>
+            <div class="phase-name-sub">Weeks 3&ndash;8</div>
+          </div>
+          <div class="phase-body">
+            Design the operational loops, the orchestration layer, the calibration cadence. Sequence the change-management interventions. <strong>Output: a working reference architecture integrated with your stack, and a 90-day adoption plan with named owners.</strong>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">03</div>
+          <div>
+            <div class="phase-name">Operating cadence</div>
+            <div class="phase-name-sub">Months 3+</div>
+          </div>
+          <div class="phase-body">
+            Ongoing fractional CAIO support. Weekly or bi-weekly cadence. Calibration reviews, vendor decisions, board reporting, the operational loop running on autopilot. <strong>Output: a system that improves on its own and a team that can run it without me.</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-num">
+        <span class="num">07</span>
+        <span class="title">Engage</span>
+      </div>
+
+      <div class="cta-box">
+        <div class="cta-label">Inquiry</div>
+        <div class="cta-title">Two engagement slots open. What are you trying to ship?</div>
+        <div class="cta-body">
+          A short note about your situation is enough to start &mdash; what you&rsquo;re trying to change, where you are today, what success looks like. I reply within 48 hours; a 30-minute scoping call follows if there&rsquo;s mutual fit.
+        </div>
+        <div class="cta-links">
+          <a href="/#engage">Send inquiry &rarr;</a>
+          <a href="/tickerly.html">See Tickerly</a>
+          <a href="/about.html">About</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Aparoop Chakraborty</div>
+      <div>Fractional partnership · <em>2026</em></div>
+      <div><a href="/">&larr; Home</a></div>
+    </footer>
+
+  </div>
+</body>
+</html>
